@@ -7,13 +7,74 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Custom styles for this template -->
+   <link href="signin.css" rel="stylesheet">
+   <style>
+html,
+body {
+display: inline-block;
+text-align: center;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+padding-top: 40px;
+padding-bottom: 40px;
+background-color: #f2f2f2;
+
+}
+.square{
+    color: #66ccff;
+    margin: auto;
+    height: 300px;
+    width:  300px;
+    background-color: powderblue;
+}
+
+.login{
+
+}
+
+.SignInForm {
+width: 100%;
+max-width: 330px;
+padding: 15px;
+margin: 0 auto;
+}
+.SignInForm .checkbox {
+font-weight: 400;
+}
+.SignInForm .form-control {
+position: relative;
+box-sizing: border-box;
+height: auto;
+padding: 10px;
+font-size: 16px;
+}
+.SignInForm .form-control:focus {
+z-index: 2;
+}
+.SignInForm input[type="text"] {
+margin-bottom: -1px;
+border-bottom-right-radius: 0;
+border-bottom-left-radius: 0;
+}
+.SignInForm input[type="password"] {
+margin-bottom: 10px;
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+}
+
+</style>
 </head>
 <body>
-<body style="background-color:#49fb35">
+<bgcolor="##49fb35">
+
 <div class="container">
 
-  <h2>Please Login</h2>
-  <form>
+  <h2 align="center">Please Login</h2>
+  <form class="SignInForm">
     <div class="form-group">
       <label for="user">Email:</label>
       <input type="text" class="form-control" id="email" placeholder="Email" required>
@@ -22,10 +83,10 @@
       <label for="password">Password:</label>
       <input type="password" class="form-control" id="password" placeholder="Password" required>
     </div>
-     <button type="submit" class="btn btn-primary"><id="submit">Submit</button>
+    <button type="button" class="btn btn-primary" id="login'">Login</button>
+    <a href="https://www.w3schools.com">Sign Up</a>
+  </form class="SignInForm">
 
-
-  </form>
 </div>
 
 </body>
