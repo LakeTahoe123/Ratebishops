@@ -2,12 +2,12 @@
 (function() {
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyBco8PGP1xna_Do_2tgHYmlpikv6Ar03JI",
-    authDomain: "socialmedia-7b24f.firebaseapp.com",
-    databaseURL: "https://socialmedia-7b24f.firebaseio.com",
-    projectId: "socialmedia-7b24f",
-    storageBucket: "socialmedia-7b24f.appspot.com",
-    messagingSenderId: "37163023515"
+    apiKey: "AIzaSyBGBBbL9dDtRDi7WG3RsZ4eE-2qnqkAvFw",
+    authDomain: "ratebishops-6b27c.firebaseapp.com",
+    databaseURL: "https://ratebishops-6b27c.firebaseio.com",
+    projectId: "ratebishops-6b27c",
+    storageBucket: "ratebishops-6b27c.appspot.com",
+    messagingSenderId: "62112601506"
   };
   firebase.initializeApp(config);
 
@@ -17,11 +17,11 @@ const txtEmail=document.getElementById("email");
 console.log(txtEmail);
 const txtPassword=document.getElementById("password");
 console.log(txtPassword)
-const btnSubmit=document.getElementById("submit");
+const btnSubmit=document.getElementById("login");
 //const btnSignup=document.getElementById("btnSignup");
 //const btnGoogle=document.getElementById("btnGoogleSignIn");
 
-
+console.log("hi");
 btnSubmit.addEventListener('click', e =>{
   console.log("clicked");
   const email=txtEmail.value;
@@ -75,7 +75,7 @@ firebase.auth().onAuthStateChanged(firebaseUser=>{
     console.log(firebaseUser);
     console.log(firebaseUser.uid);
     console.log("should redirect here.");
-    //window.location.href = '../match.html';
+    window.location.href = '../welcome.html';
 
   }else{
     console.log("not logged in");
