@@ -1,0 +1,32 @@
+[debug] [2018-02-27T06:18:06.413Z] ----------------------------------------------------------------------
+[debug] [2018-02-27T06:18:06.416Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve -p 5003
+[debug] [2018-02-27T06:18:06.416Z] CLI Version:   3.17.4
+[debug] [2018-02-27T06:18:06.416Z] Platform:      linux
+[debug] [2018-02-27T06:18:06.416Z] Node Version:  v9.4.0
+[debug] [2018-02-27T06:18:06.416Z] Time:          Mon Feb 26 2018 22:18:06 GMT-0800 (PST)
+[debug] [2018-02-27T06:18:06.416Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-02-27T06:18:06.426Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-02-27T06:18:06.426Z] > authorizing via signed-in user
+[debug] [2018-02-27T06:18:06.428Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ratebishops-6b27c  
+  
+ Mon Feb 26 2018 22:18:06 GMT-0800 (PST)
+[debug] [2018-02-27T06:18:07.058Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-27T06:18:07.059Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/ratebishops-6b27c/tokens  
+  
+ Mon Feb 26 2018 22:18:07 GMT-0800 (PST)
+[debug] [2018-02-27T06:18:07.441Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/khb/School/Programming/BishopsAttendance'...
+[info] 
+[debug] [2018-02-27T06:18:07.444Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/ratebishops-6b27c  
+  
+ Mon Feb 26 2018 22:18:07 GMT-0800 (PST)
+[debug] [2018-02-27T06:18:08.082Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-27T06:18:08.083Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/62112601506/clients/_:getWebAppConfig  
+  
+ Mon Feb 26 2018 22:18:08 GMT-0800 (PST)
+[debug] [2018-02-27T06:18:08.685Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5003
+

@@ -1,35 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-  </head>
-  <body>
-    <h1>
-      Now its time to setup your account!
-    </h1>
-    <body>
-    <div class="box">
-      <div class="loginbox">
-        <form class="loginform">
-          <input id="email" type="email" name="email" placeholder="Email" required><br>
-          <input id="password" type="password" name="password" placeholder="Password" required><br>
-          <select id="grade">
-            <option value="Pick">(Pick a grade)</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-          <input id="finished" type="button" value="FINISH">
-        </form>
-      </div>
+    <style>
+    html,
+    body,
+    .login-box {
+      height: 100%;
+    }
+    a{
+      margin-bottom: 20px;
+      text-align:center;display:block;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="valign-wrapper row login-box">
+    <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
+      <form>
+        <div class="card-content">
+          <span class="card-title">Create an Account</span>
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="email">Email address</label>
+              <input type="email" class="validate" name="email" id="email" required/>
+            </div>
+            <div class="input-field col s12">
+              <label for="password">Password </label>
+              <input type="password" class="validate" name="password" id="password" required/>
+            </div>
+
+            <div class="input-field col s12">
+              <select id="grade">
+                <option disabled selected>Choose your option</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <label>Grade Level</label>
+          </div>
+          </div>
+        </div>
+        <div class="card-action right-align">
+          <a id="signup" class="btn center green waves-effect waves-light">Create Account</a>
+        </div>
+      </form>
 
     </div>
-    <script src="signup.js"></script>
-  </body>
+  </div>
+  <script src="signup.js"></script>
+</body>
 
 </html>

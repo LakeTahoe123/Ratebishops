@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+
+    <style>
+
+  </style>
+</head>
+
+<body>
+  <input id="department" placeholder="Department" type="text"><br>
+  <input id="classname" placeholder="Class" type="text"><br>
+  <input id="teacher" placeholder="Teacher Name" type="text"><br>
+  <textarea id="review" placeholder="Your Review goes here."></textarea><br>
+  <select id="letterGrade">
+    <option disabled selected>What grade did you get?</option>
+    <option>A+</option>
+    <option>A</option>
+    <option>A-</option>
+    <option>B+</option>
+    <option>B</option>
+    <option>B-</option>
+    <option>C+</option>
+    <option>C</option>
+    <option>C-</option>
+    <option>F</option>
+  </select>
+  <br>
+  <input type="button" id="postReview" value="POST">
+
+  <script src="rate.js"></script>
+</body>
+
+</html>

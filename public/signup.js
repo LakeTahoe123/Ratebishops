@@ -18,16 +18,20 @@ var uid="user";
 const txtEmail=document.getElementById("email");
 const txtPassword=document.getElementById("password");
 const txtGrade=document.getElementById("grade")
-const btnFinish=document.getElementById("finished");
+const btnSignup=document.getElementById("signup");
 
 
-btnFinish.addEventListener('click', e =>{
+btnSignup.addEventListener('click', e =>{
   console.log("finishClicked");//TODO find a way to integrate SubmitForm into this
   const email=txtEmail.value;
   const pass=txtPassword.value;
   const auth=firebase.auth();
   auth.createUserWithEmailAndPassword(email,pass);
-})
+});
+
+$(document).ready(function() {
+  $('select').material_select();
+});
 
 function writeUserData(uid1) {
   const grade=txtGrade.value;
@@ -44,8 +48,6 @@ function writeUserData(uid1) {
 firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){
     console.log("logged in.");
-
-    console.log("finish");
     uid = firebase.auth().currentUser.uid;
     console.log(uid);
     writeUserData(uid);
