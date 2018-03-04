@@ -3,37 +3,89 @@
   <head>
     <meta charset="utf-8">
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
     <style>
-
+    html,
+    body,
+    .login-box {
+      height: 100%;
+    }
+    a{
+      margin-bottom: 20px;
+      text-align:center;display:block;
+    }
   </style>
 </head>
 
 <body>
-  <input id="department" placeholder="Department" type="text"><br>
-  <input id="classname" placeholder="Class" type="text"><br>
-  <input id="teacher" placeholder="Teacher Name" type="text"><br>
-  <textarea id="review" placeholder="Your Review goes here."></textarea><br>
-  <select id="letterGrade">
-    <option disabled selected>What grade did you get?</option>
-    <option>A+</option>
-    <option>A</option>
-    <option>A-</option>
-    <option>B+</option>
-    <option>B</option>
-    <option>B-</option>
-    <option>C+</option>
-    <option>C</option>
-    <option>C-</option>
-    <option>F</option>
-  </select>
-  <br>
-  <input type="button" id="postReview" value="POST">
+  <div class="valign-wrapper row login-box">
+    <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
+      <form>
+        <div class="card-content">
+          <span class="card-title">Rate Your Teacher</span>
+          <div class="row">
+            <div class="input-field col s12">
+              <select id="department" onchange="changeClasses()">
+                <option value="" disabled selected>(Pick)</option>
+                <option value="SCIENCE">Science</option>
+                <option value="HISTORY">History</option>
+                <option value="ENGLISH">English</option>
+                <option value="LANGUAGE">Language</option>
+                <option value="COMPUTERSCIENCE">Computer Science</option>
+                <option value="ARTS">Arts</option>
+                <option value="MATH">Math</option>
+                <option value="RELIGION">Religion</option>
+              </select>
+              <label>Department</label>
+            </div>
+            <div class="input-field col s12">
+              <select id="className">
+                <option value="" disabled selected>(Pick a department first.)</option>
+              </select>
+              <label>Classes</label>
+            </div>
+            
+            <div class="input-field col s12">
+              <label for="teacher">Teacher </label>
+              <input type="text" class="validate" name="teacher" id="teacher" required/>
+            </div>
 
+            <div class="input-field col s12">
+              <select id="letterGrade">
+                <option value="" disabled selected>(Pick)</option>
+                <option>A+</option>
+                <option>A</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B</option>
+                <option>B-</option>
+                <option>C+</option>
+                <option>C</option>
+                <option>C-</option>
+                <option>F</option>
+              </select>
+              <label>What grade did you get?</label>
+            </div>
+
+
+            <div class="input-field col s12">
+              <textarea id="review" class="materialize-textarea"></textarea>
+              <label for="review">Review</label>
+            </div>
+          </div>
+        </div>
+        <div class="card-action right-align">
+          <a id="postReview" class="btn center green waves-effect waves-light">Submit</a>
+        </div>
+      </form>
+
+
+    </div>
+  </div>
   <script src="rate.js"></script>
 </body>
 

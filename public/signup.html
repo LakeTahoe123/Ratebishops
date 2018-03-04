@@ -18,6 +18,15 @@
       margin-bottom: 20px;
       text-align:center;display:block;
 
+    }.errormsg{
+      color: red;
+      background-color: #ffc9c9;
+      border: red;
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 5px;
+      padding: 7px;
+      margin-bottom:1%;
     }
   </style>
 </head>
@@ -33,10 +42,14 @@
               <label for="email">Email address</label>
               <input type="email" class="validate" name="email" id="email" required/>
             </div>
+            <span id="emailerror" class="errormsg">Email is required.</span>
+
             <div class="input-field col s12">
               <label for="password">Password </label>
               <input type="password" class="validate" name="password" id="password" required/>
             </div>
+            <br>
+            <span id="passerror" class="errormsg">please enter a password.</span>
 
             <div class="input-field col s12">
               <select id="grade">
@@ -51,11 +64,17 @@
               </select>
               <label>Grade Level</label>
           </div>
+          <br>
+          <span id="gradeerror" class="errormsg">please select your grade level.</span>
+
           </div>
         </div>
         <div class="card-action right-align">
           <a id="signup" class="btn center green waves-effect waves-light">Create Account</a>
+          <span id="errors" class="errormsg">please check that all fields are filled out correctly.</span>
+
         </div>
+
       </form>
 
     </div>

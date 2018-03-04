@@ -31,24 +31,22 @@ btnLogout.addEventListener('click', e =>{
 
 function getgrade(snap){
   var grade = snap.child("Grade").val();
-  console.log(grade);
   document.getElementById("gradelvl").innerHTML = "Your grade is: "+grade;
 }
 
 firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){
     var userId = firebase.auth().currentUser.uid;
-    console.log(userId);
     var publicRef = database.ref("users/"+userId+"/publicData");
     publicRef.once("value")
     .then(function(snapshot) {
       var key = snapshot.key;
-      console.log(key);
       snap=snapshot;
       getgrade(snap);
 
     });
   }else{
     console.log("not logged in");
+    window.location.href = '../login.html';
   }
 });

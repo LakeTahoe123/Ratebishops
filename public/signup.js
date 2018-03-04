@@ -15,18 +15,27 @@
 }());
 var uid="user";
 
+$(".errormsg").hide();
+
+
 const txtEmail=document.getElementById("email");
 const txtPassword=document.getElementById("password");
-const txtGrade=document.getElementById("grade")
+const txtGrade=document.getElementById("grade");
 const btnSignup=document.getElementById("signup");
 
 
 btnSignup.addEventListener('click', e =>{
-  console.log("finishClicked");//TODO find a way to integrate SubmitForm into this
+  //TODO find a way to integrate SubmitForm into this //?? idk what this even means
   const email=txtEmail.value;
   const pass=txtPassword.value;
   const auth=firebase.auth();
-  auth.createUserWithEmailAndPassword(email,pass);
+  if(validateForm()){
+    firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage);
+    });
+  }
 });
 
 $(document).ready(function() {
@@ -35,23 +44,38 @@ $(document).ready(function() {
 
 function writeUserData(uid1) {
   const grade=txtGrade.value;
-  console.log(grade);
   firebase.database().ref("users/"+uid1+"/publicData").set({
-      Grade: grade
+    Grade: grade
   }).then(() => {
-    console.log('Write succeeded!');
     window.location.replace("../welcome.html");
   });
+}
+
+function validateForm() {
+    var wassup=true;
+    $(".errormsg").hide()
+    if (txtPassword.value=="") {
+      $('#passerror').show();
+      wassup=false;
+    }if (txtEmail.value=="") {
+      $('#emailerror').show();
+      wassup=false;
+    }if(txtGrade.value=="Choose your option"){
+      $('#gradeerror').show();
+      wassup=false;
+    }
+    if(!wassup){
+      $('#errors').show();
+    }
+    return wassup;
 
 }
 
 firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){
-    console.log("logged in.");
     uid = firebase.auth().currentUser.uid;
-    console.log(uid);
     writeUserData(uid);
-
+    window.location.href = '../welcome.html';
   }else{
     console.log("not logged in");
   }

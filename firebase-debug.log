@@ -1,32 +1,41 @@
-[debug] [2018-02-27T06:18:06.413Z] ----------------------------------------------------------------------
-[debug] [2018-02-27T06:18:06.416Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve -p 5003
-[debug] [2018-02-27T06:18:06.416Z] CLI Version:   3.17.4
-[debug] [2018-02-27T06:18:06.416Z] Platform:      linux
-[debug] [2018-02-27T06:18:06.416Z] Node Version:  v9.4.0
-[debug] [2018-02-27T06:18:06.416Z] Time:          Mon Feb 26 2018 22:18:06 GMT-0800 (PST)
-[debug] [2018-02-27T06:18:06.416Z] ----------------------------------------------------------------------
+[debug] [2018-03-04T02:12:34.254Z] ----------------------------------------------------------------------
+[debug] [2018-03-04T02:12:34.257Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-03-04T02:12:34.258Z] CLI Version:   3.17.4
+[debug] [2018-03-04T02:12:34.258Z] Platform:      linux
+[debug] [2018-03-04T02:12:34.258Z] Node Version:  v9.4.0
+[debug] [2018-03-04T02:12:34.258Z] Time:          Sat Mar 03 2018 18:12:34 GMT-0800 (PST)
+[debug] [2018-03-04T02:12:34.258Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-02-27T06:18:06.426Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-02-27T06:18:06.426Z] > authorizing via signed-in user
-[debug] [2018-02-27T06:18:06.428Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ratebishops-6b27c  
+[debug] [2018-03-04T02:12:34.273Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-03-04T02:12:34.274Z] > authorizing via signed-in user
+[debug] [2018-03-04T02:12:34.275Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-03-04T02:12:34.276Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/zUnHk54NCxgm3C8jesg9aKZx0mj4_eg1kOu-jjd3d-I',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Mar 03 2018 18:12:34 GMT-0800 (PST)
+[debug] [2018-03-04T02:12:34.563Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-04T02:12:34.575Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ratebishops-6b27c  
   
- Mon Feb 26 2018 22:18:06 GMT-0800 (PST)
-[debug] [2018-02-27T06:18:07.058Z] <<< HTTP RESPONSE 200
-[debug] [2018-02-27T06:18:07.059Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/ratebishops-6b27c/tokens  
+ Sat Mar 03 2018 18:12:34 GMT-0800 (PST)
+[debug] [2018-03-04T02:12:35.357Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-04T02:12:35.358Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/ratebishops-6b27c/tokens  
   
- Mon Feb 26 2018 22:18:07 GMT-0800 (PST)
-[debug] [2018-02-27T06:18:07.441Z] <<< HTTP RESPONSE 200
+ Sat Mar 03 2018 18:12:35 GMT-0800 (PST)
+[debug] [2018-03-04T02:12:35.832Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/home/khb/School/Programming/BishopsAttendance'...
 [info] 
-[debug] [2018-02-27T06:18:07.444Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/ratebishops-6b27c  
+[debug] [2018-03-04T02:12:35.836Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/ratebishops-6b27c  
   
- Mon Feb 26 2018 22:18:07 GMT-0800 (PST)
-[debug] [2018-02-27T06:18:08.082Z] <<< HTTP RESPONSE 200
-[debug] [2018-02-27T06:18:08.083Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/62112601506/clients/_:getWebAppConfig  
+ Sat Mar 03 2018 18:12:35 GMT-0800 (PST)
+[debug] [2018-03-04T02:12:36.481Z] <<< HTTP RESPONSE 200
+[debug] [2018-03-04T02:12:36.482Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/62112601506/clients/_:getWebAppConfig  
   
- Mon Feb 26 2018 22:18:08 GMT-0800 (PST)
-[debug] [2018-02-27T06:18:08.685Z] <<< HTTP RESPONSE 200
+ Sat Mar 03 2018 18:12:36 GMT-0800 (PST)
+[debug] [2018-03-04T02:12:37.151Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
-[info] ✔  hosting: Local server: http://localhost:5003
+[info] ✔  hosting: Local server: http://localhost:5000
 
