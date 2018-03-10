@@ -27,6 +27,8 @@ document.getElementById('postReview').addEventListener('click', e=>{
 
 $(document).ready(function() {
   $('select').material_select();
+  $('#modal1').modal();
+
 });
 
 function reqListener () {
@@ -65,6 +67,7 @@ function getclasses(department){
 
 function setNewParentData(department,className, teacher,review, letterGrade){
   var dataRef = firebase.database().ref("tbs");
+  console.log("setting new data");
   dataRef.child(department+"/"+className+"/"+teacher).set({
     reviewsAndGrades: {
       review: review,
@@ -73,12 +76,32 @@ function setNewParentData(department,className, teacher,review, letterGrade){
   });
 }
 
+function openModal1(){
+  $('#modal1').modal({
+      dismissible: false, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+      backdrop: 'static',
+      keyboard: false,
+      ready: function(modal, trigger) {
+          console.log(modal, trigger);
+      },
+        complete: function() {
+          alert('Closed');
+        } // Callback for Modal close
+    });
+}
+
 function pushNewChildData(department,className, teacher,review, letterGrade){
   var dataRef = firebase.database().ref("tbs");
   dataRef.child(department+"/"+className+"/"+teacher).push({
     review: review,
     grade: letterGrade,
   });
+  console.log("modal opening");
 }
 
 function pushOrSetData(department,className,teacher,review,letterGrade){
@@ -89,10 +112,14 @@ function pushOrSetData(department,className,teacher,review,letterGrade){
     var key = snapshot.key;
     var hasTeacher = snapshot.hasChild(teacher);
     if(!hasTeacher){
+      console.log('hasteacher');
       setNewParentData(department,className,teacher,review,letterGrade);
     }else{
       pushNewChildData(department,className,teacher,review,letterGrade);
     }
+    console.log($('#modal1'))
+    $('#modal1').modal('open');
+
   });
 }
 

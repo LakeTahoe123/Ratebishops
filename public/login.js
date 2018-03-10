@@ -21,14 +21,19 @@ const btnSubmit=document.getElementById("login");
 //const btnSignup=document.getElementById("btnSignup");
 //const btnGoogle=document.getElementById("btnGoogleSignIn");
 
-console.log("hi");
 btnSubmit.addEventListener('click', e =>{
   console.log("clicked");
   const email=txtEmail.value;
   console.log(email);
   const pass=txtPassword.value;
   const auth=firebase.auth();
-  auth.signInWithEmailAndPassword(email,pass);
+  firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    alert(errorMessage);
+    // ...
+  });
   //promise.catch(e =>console.log(e.message));
 
 

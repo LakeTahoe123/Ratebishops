@@ -48,7 +48,7 @@
               </select>
               <label>Classes</label>
             </div>
-            
+
             <div class="input-field col s12">
               <label for="teacher">Teacher </label>
               <input type="text" class="validate" name="teacher" id="teacher" required/>
@@ -70,8 +70,10 @@
               </select>
               <label>What grade did you get?</label>
             </div>
+            <div class="input-field col s12">
 
-
+            <div class="my-rating"></div>
+          </div>
             <div class="input-field col s12">
               <textarea id="review" class="materialize-textarea"></textarea>
               <label for="review">Review</label>
@@ -79,8 +81,20 @@
           </div>
         </div>
         <div class="card-action right-align">
-          <a id="postReview" class="btn center green waves-effect waves-light">Submit</a>
+          <a  id="postReview" onclick="openModal1()" class="btn modal-trigger center green waves-effect waves-light">Submit</a>
         </div>
+        <!-- Modal Trigger -->
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+              <h4>Thanks for Submiting Your Review!</h4>
+              <p>Click the button to redirect to your home page.</p>
+            </div>
+            <div class="modal-footer">
+              <a href="../welcome.html" class="modal-action modal-close waves-effect waves-green btn-flat">Finish</a>
+            </div>
+          </div>
       </form>
 
 

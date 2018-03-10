@@ -43,9 +43,10 @@ $(document).ready(function() {
 });
 
 function writeUserData(uid1) {
-  const grade=txtGrade.value;
+  const grade1=txtGrade.value;
+  console.log(grade1)
   firebase.database().ref("users/"+uid1+"/publicData").set({
-    Grade: grade
+    Grade: grade1
   }).then(() => {
     window.location.replace("../welcome.html");
   });
@@ -75,7 +76,6 @@ firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){
     uid = firebase.auth().currentUser.uid;
     writeUserData(uid);
-    window.location.href = '../welcome.html';
   }else{
     console.log("not logged in");
   }
