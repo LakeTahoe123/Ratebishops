@@ -33,7 +33,8 @@ btnSignup.addEventListener('click', e =>{
     firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error) {
       var errorCode = error.code;
       var errorMessage = error.message;
-      alert(errorMessage);
+      document.getElementById("errors").innerHTML=(errorMessage);
+      $('#errors').show();
     });
   }
 });

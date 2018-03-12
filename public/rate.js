@@ -15,13 +15,17 @@
 var database = firebase.database();
 var uid, allClasses; //globals
 
+$(".errormsg").hide();
+
 document.getElementById('postReview').addEventListener('click', e=>{
   var department=document.getElementById("department").value;
   var className=document.getElementById("className").value;
   var teacher=document.getElementById("teacher").value;
   var review=document.getElementById("review").value;
   var letterGrade=document.getElementById("letterGrade").value;
-  pushOrSetData(department,className, teacher,review, letterGrade);
+  if(validateForm(department,className,teacher,review,letterGrade)){
+    pushOrSetData(department,className, teacher,review, letterGrade);
+  }
 
 });
 
@@ -45,8 +49,8 @@ document.getElementById("department").addEventListener("change", changeClasses()
 function changeClasses(){ //add the correct class options to the select (classes are drawn from the text file)
   $('#className').empty()
   var selectDept=document.getElementById("department");
-  console.log("changeclasses");
   var classList=getclasses(selectDept.value);
+  classList.pop();
   var option = document.createElement("option");
   option.text = "(Pick Your Class)";
   document.getElementById("className").add(option);
@@ -75,6 +79,7 @@ function setNewParentData(department,className, teacher,review, letterGrade){
     },
   });
 }
+
 
 function openModal1(){
   $('#modal1').modal({
@@ -123,7 +128,19 @@ function pushOrSetData(department,className,teacher,review,letterGrade){
   });
 }
 
+function validateForm(department,className,teacher,review,letterGrade) {
+    var wassup=true;
+    $(".errormsg").hide();
+    console.log(teacher);
+    if(department=="(Pick)" || className=="(Pick Your Class)" || teacher=="" || review=="" || letterGrade==""){
+      wassup=false;
+    }
+    if(!wassup){
+      $("#rateerror").show();
+    }
+    return wassup;
 
+}
 
 firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){

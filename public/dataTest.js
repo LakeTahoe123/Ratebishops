@@ -10,8 +10,6 @@ document.getElementById('postReview').addEventListener("click", e=>(
   var teacher=document.getElementById("teacher").value;
   var review=document.getElementById("review").value;
   var letterGrade=document.getElementByID("letterGrade").value;
-
-
 }
 
 

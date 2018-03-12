@@ -13,6 +13,7 @@
 
 }());
 
+$(".errormsg").hide();
 const txtEmail=document.getElementById("email");
 console.log(txtEmail);
 const txtPassword=document.getElementById("password");
@@ -31,13 +32,16 @@ btnSubmit.addEventListener('click', e =>{
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    alert(errorMessage);
-    // ...
+    $(".errormsg").show();
+    console.log(errorMessage);
+    if(errorMessage=="There is no user record corresponding to this identifier. The user may have been deleted."){
+      document.getElementById("errors").innerHTML="No user found with this email.";
+    }else{
+      document.getElementById("errors").innerHTML=(errorMessage);
+    }
   });
   //promise.catch(e =>console.log(e.message));
-
-
-})
+});
 
 /*btnSignup.addEventListener('click', e=>{
   // TODO: check for real email

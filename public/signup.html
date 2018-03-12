@@ -26,7 +26,7 @@
       border-width: 2px;
       border-radius: 5px;
       padding: 7px;
-      margin-bottom:1%;
+      margin-bottom:10px;
     }
   </style>
 </head>
@@ -41,17 +41,19 @@
             <div class="input-field col s12">
               <label for="email">Email address</label>
               <input type="email" class="validate" name="email" id="email" required/>
+              <span id="emailerror" class="errormsg">Email is required.</span>
             </div>
-            <span id="emailerror" class="errormsg">Email is required.</span>
 
             <div class="input-field col s12">
               <label for="password">Password </label>
               <input type="password" class="validate" name="password" id="password" required/>
+              <span id="passerror" class="errormsg">please enter a password.</span>
+              <br>
             </div>
             <br>
-            <span id="passerror" class="errormsg">please enter a password.</span>
 
-            <div class="input-field col s12">
+            <div class="col s12">
+              <label for="grade">Grade Level</label>
               <select id="grade">
                 <option disabled selected>Choose your option</option>
                 <option value="6">6</option>
@@ -62,7 +64,6 @@
                 <option value="11">11</option>
                 <option value="12">12</option>
               </select>
-              <label>Grade Level</label>
           </div>
           <br>
           <span id="gradeerror" class="errormsg">please select your grade level.</span>

@@ -20,6 +20,19 @@
       text-align:center;display:block;
 
     }
+    #signuplink {
+      text-decoration: underline;
+    }
+    .errormsg{
+      color: red;
+      background-color: #ffc9c9;
+      border: red;
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 5px;
+      padding: 7px;
+      margin-bottom:1%;
+    }
   </style>
 </head>
 
@@ -34,6 +47,7 @@
               <label for="email">Email address</label>
               <input type="email" class="validate" name="email" id="email" required/>
             </div>
+
             <div class="input-field col s12">
               <label for="password">Password </label>
               <input type="password" class="validate" name="password" id="password" required/>
@@ -42,9 +56,13 @@
         </div>
         <div class="card-action right-align">
           <a id="login" class="waves-effect center green waves-light btn">Login</a>
+          <br>
+          <span id="errors" class="errormsg">Check that all fields are filled out correctly.</span>
+
+
         </div>
       </form>
-      <a href="./signup.html">New here? Create an Account.</a>
+      <a id="signuplink" href="./signup.html">New here? Create an Account.</a>
     </div>
   </div>
   <script src="login.js"></script>

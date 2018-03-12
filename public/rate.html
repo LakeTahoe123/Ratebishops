@@ -18,6 +18,15 @@
       margin-bottom: 20px;
       text-align:center;display:block;
     }
+    .errormsg{
+      color: red;
+      background-color: #ffc9c9;
+      border: red;
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 5px;
+      padding: 7px;
+    }
   </style>
 </head>
 
@@ -81,6 +90,7 @@
           </div>
         </div>
         <div class="card-action right-align">
+          <span id="rateerror" class="errormsg">All fields are required.</span>
           <a  id="postReview" onclick="openModal1()" class="btn modal-trigger center green waves-effect waves-light">Submit</a>
         </div>
         <!-- Modal Trigger -->
@@ -93,6 +103,7 @@
             </div>
             <div class="modal-footer">
               <a href="../welcome.html" class="modal-action modal-close waves-effect waves-green btn-flat">Finish</a>
+
             </div>
           </div>
       </form>
