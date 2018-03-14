@@ -95,7 +95,7 @@ function openModal1(){
           console.log(modal, trigger);
       },
         complete: function() {
-          alert('Closed');
+          console.log("closemodal");
         } // Callback for Modal close
     });
 }
