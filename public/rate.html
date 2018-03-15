@@ -48,9 +48,21 @@
                 <option value="ARTS">Arts</option>
                 <option value="MATH">Math</option>
                 <option value="RELIGION">Religion</option>
+                <option value="INDEPENDENT ELECTIVES">Other</option>
               </select>
               <label>Department</label>
             </div>
+            <div id="divlang" class="input-field col s12">
+              <select id="languageSelect" onchange="changeLangClasses()">
+                <option value="" disabled selected>(Pick)</option>
+                <option value="CHINESE">Chinese</option>
+                <option value="FRENCH">French</option>
+                <option value="LATIN">Latin</option>
+                <option value="SPANISH">Spanish</option>
+              </select>
+              <label>Language</label>
+            </div>
+
             <div class="input-field col s12">
               <select id="className">
                 <option value="" disabled selected>(Pick a department first.)</option>

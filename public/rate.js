@@ -13,9 +13,14 @@
 }());
 
 var database = firebase.database();
-var uid, allClasses; //globals
+var uid;
+var allClasses="lol";
 
 $(".errormsg").hide();
+$("#languageSelect").hide();
+$("#divlang").hide();
+
+
 
 document.getElementById('postReview').addEventListener('click', e=>{
   var department=document.getElementById("department").value;
@@ -29,17 +34,18 @@ document.getElementById('postReview').addEventListener('click', e=>{
 
 });
 
-$(document).ready(function() {
+$(document).ready(function() { //stuff that exectures when the page is loaded
   $('select').material_select();
   $('#modal1').modal();
-
 });
 
+
+
 function reqListener () {
-  allClasses=this.responseText;
+  allClasses=this.responseText; //i honestly have no clue what this is
 }
 
-var oReq = new XMLHttpRequest();
+var oReq = new XMLHttpRequest(); //this the logic to get the classes.txt file
 oReq.addEventListener("load", reqListener);
 oReq.open("GET", "../classes.txt");
 oReq.send();
@@ -49,24 +55,61 @@ document.getElementById("department").addEventListener("change", changeClasses()
 function changeClasses(){ //add the correct class options to the select (classes are drawn from the text file)
   $('#className').empty()
   var selectDept=document.getElementById("department");
-  var classList=getclasses(selectDept.value);
-  classList.pop();
-  var option = document.createElement("option");
-  option.text = "(Pick Your Class)";
-  document.getElementById("className").add(option);
-  document.getElementById("className").options[0].disabled = true;
-  for(i=1; i<(classList.length); i++){
-    var option = document.createElement("option");
-    option.text = classList[i];
-    document.getElementById("className").add(option);
+  if(selectDept.value=="LANGUAGE"){
+    //$("#languageSelect").show();
+    $("#divlang").show();
+    $('select').material_select();
+
+  }else{
+    //$("#languageSelect").hide();
+    $("#divlang").hide();
+
+
+    var cList=getclasses(selectDept.value);
+    insertClasses(cList);
   }
-  $('select').material_select();
+
 }
 
+  function changeLangClasses(){
+    $('#className').empty()
+
+    //this will insert the correct language classes when user changes their language
+    var cList=getclasses(document.getElementById("languageSelect").value);
+
+    insertClasses(cList);
+  }
+
+  function insertClasses(classList){
+    try{
+      classList.pop(); //removes the last element, which comes out empty usually
+      var option = document.createElement("option"); //this logic makes the placeholder option first
+      option.text = "(Pick Your Class)";
+      document.getElementById("className").add(option);
+      document.getElementById("className").options[0].disabled = true;
+
+      for(i=1; i<(classList.length); i++){
+        var option = document.createElement("option"); //the actual classes in
+        option.text = classList[i];
+        document.getElementById("className").add(option);
+      }
+      $('select').material_select();
+    }catch(err){
+      console.log(err);
+    }
+
+  }
+
 function getclasses(department){
-  var firstsplit=allClasses.split("***START OF "+department+" SECTION***");//TODO catch this error so that other code will still run
-  var secondsplit=firstsplit[1].split("***END OF "+department+" SECTION***");
-  return secondsplit[0].split("\n");
+  try{
+    var firstsplit=allClasses.split("***START OF "+department+" SECTION***");//TODO catch this error so that other code will still run
+    var secondsplit=firstsplit[1].split("***END OF "+department+" SECTION***");
+    return secondsplit[0].split("\n");
+  }
+  catch(err){
+    console.log(err);
+  }
+
 }
 
 function setNewParentData(department,className, teacher,review, letterGrade){
@@ -129,10 +172,10 @@ function pushOrSetData(department,className,teacher,review,letterGrade){
 }
 
 function validateForm(department,className,teacher,review,letterGrade) {
-    var wassup=true;
+    var wassup=true; //if wassup is true, then the forms good and it will submit
     $(".errormsg").hide();
     console.log(teacher);
-    if(department=="(Pick)" || className=="(Pick Your Class)" || teacher=="" || review=="" || letterGrade==""){
+    if(department=="(Pick)" || className=="(Pick Your Class)" || className=="" || teacher=="" || review=="" || letterGrade==""){
       wassup=false;
     }
     if(!wassup){
