@@ -9,10 +9,55 @@ admin.initializeApp(functions.config().firebase);
 
 exports.addTimestamp = functions.database.ref('/tbs/{department}/{class}/{teacher}/{reviews}').onCreate((event) => {
   pathArray=event.data.ref.path.pieces_;
+  teacherName=pathArray[3]; //TODO implement server side check that the teacher isnt null
   pathString="";
+  var isAdmin = event.auth.admin;
+  var uid = event.auth.variable ? event.auth.variable.uid : null;
   for(i=0; i<pathArray.length; i++){
-    pathString=pathString+"/"+pathArray[i] //PathString is the path of this review
+    pathString=pathString+"/"+pathArray[i]; //PathString is the path of this review
   }
+
+  var myreview=event.data.val(); //getting the amount of stars that the person left on this teacher
+  numStarsreview=myreview["stars"];
+  console.log("numstars is "+numStarsreview);
+  var numChildren,reviews;
+  admin.database().ref("/teachers/"+teacherName).once("value", function(snapshot) {
+      numChildren = snapshot.numChildren();
+      reviews=snapshot.val();
+  }).then(() =>{
+      avgRatingRef = admin.database().ref("/teachers/"+teacherName);
+      console.log(reviews);
+      //admin.database().ref(pathString).once("value",function(snapshot){
+        //reviews=snapshot.val();
+      //}
+      console.log("numChildren is: "+numChildren);
+
+      if(numChildren!=0){
+        numRatings1 = reviews["numRatings"];
+        console.log("numRatings is: "+numRatings1);
+        avg = reviews["avgRating"];
+        console.log("avg rating: "+avg); //the teachers old average rating
+        newAvg = (avg*numRatings1+numStarsreview)/(numRatings1+1);
+        console.log("new avg is: "+newAvg);
+
+        avgRatingRef.set({
+          avgRating: newAvg,
+          numRatings: numRatings1+1
+        });
+      }else{
+        avgRatingRef.set({
+          avgRating: numStarsreview,
+          numRatings: 1
+        });
+      }
+  });
+
+
+  admin.database().ref('/users/'+uid+'/privateData').once("value", function (snapshot){ //records that this user made a review of this teacher
+    var reviewList=snapshot.val();
+    admin.database().ref('/users/'+uid+'/privateData').push(pathString);
+  });
+
 
   var lastFiveref=admin.database().ref("/lastFive");
   var numberReviews=0;
@@ -66,6 +111,9 @@ exports.addTimestamp = functions.database.ref('/tbs/{department}/{class}/{teache
           console.log("delete oldest review");
           admin.database().ref('/lastFive').child(lastFivekey).remove();
           admin.database().ref('/lastFive').push(pathString);
+          admin.database().ref('/users/'+uid+'privateData').push(pathString);
+
+
         }); //gets timestamps from the pathlist that we already have so that we can find the minimum timestamp
 
       });

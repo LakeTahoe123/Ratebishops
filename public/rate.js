@@ -28,8 +28,10 @@ document.getElementById('postReview').addEventListener('click', e=>{
   var teacher=document.getElementById("teacher").value;
   var review=document.getElementById("review").value;
   var letterGrade=document.getElementById("letterGrade").value;
-  if(validateForm(department,className,teacher,review,letterGrade)){
-    pushOrSetData(department,className, teacher,review, letterGrade);
+  //var starRating=getNumStars();
+  var starRating=1;
+  if(validateForm(department,className,teacher,review,letterGrade,starRating)){
+    pushOrSetData(department,className, teacher,review, letterGrade,starRating);
   }
 
 });
@@ -71,16 +73,27 @@ function changeClasses(){ //add the correct class options to the select (classes
 
 }
 
-  function changeLangClasses(){
-    $('#className').empty()
-
-    //this will insert the correct language classes when user changes their language
-    var cList=getclasses(document.getElementById("languageSelect").value);
-
-    insertClasses(cList);
+function getNumStars() {
+  console.log(document.getElementById('star1').checked)
+  for (i = 1; i <= 5; i++) {
+    spider='star'
+    spider +=i
+    if (document.getElementById(spider).checked) {
+      console.log(spider)
+      return spider;
+    }
   }
+}
 
-  function insertClasses(classList){
+function changeLangClasses(){
+  $('#className').empty()
+
+  //this will insert the correct language classes when user changes their language
+  var cList=getclasses(document.getElementById("languageSelect").value);
+  insertClasses(cList);
+}
+
+function insertClasses(classList){
     try{
       classList.pop(); //removes the last element, which comes out empty usually
       var option = document.createElement("option"); //this logic makes the placeholder option first
@@ -112,13 +125,14 @@ function getclasses(department){
 
 }
 
-function setNewParentData(department,className, teacher,review, letterGrade){
+function setNewParentData(department,className, teacher,review, letterGrade, starRating){
   var dataRef = firebase.database().ref("tbs");
   console.log("setting new data");
   dataRef.child(department+"/"+className+"/"+teacher).set({
     reviewsAndGrades: {
       review: review,
       grade: letterGrade,
+      stars: starRating
     },
   });
 }
@@ -143,16 +157,17 @@ function openModal1(){
     });
 }
 
-function pushNewChildData(department,className, teacher,review, letterGrade){
+function pushNewChildData(department,className, teacher,review, letterGrade, starRating){
   var dataRef = firebase.database().ref("tbs");
   dataRef.child(department+"/"+className+"/"+teacher).push({
     review: review,
     grade: letterGrade,
+    stars: starRating
   });
   console.log("modal opening");
 }
 
-function pushOrSetData(department,className,teacher,review,letterGrade){
+function pushOrSetData(department,className,teacher,review,letterGrade, starRating){
   var publicRef = database.ref("tbs/"+department+"/"+className);
   var snap,hasTeacher;
   publicRef.once("value")
@@ -161,9 +176,9 @@ function pushOrSetData(department,className,teacher,review,letterGrade){
     var hasTeacher = snapshot.hasChild(teacher);
     if(!hasTeacher){
       console.log('hasteacher');
-      setNewParentData(department,className,teacher,review,letterGrade);
+      setNewParentData(department,className,teacher,review,letterGrade,starRating);
     }else{
-      pushNewChildData(department,className,teacher,review,letterGrade);
+      pushNewChildData(department,className,teacher,review,letterGrade,starRating);
     }
     console.log($('#modal1'))
     $('#modal1').modal('open');
@@ -171,18 +186,17 @@ function pushOrSetData(department,className,teacher,review,letterGrade){
   });
 }
 
-function validateForm(department,className,teacher,review,letterGrade) {
+function validateForm(department,className,teacher,review,letterGrade, starRating) {
     var wassup=true; //if wassup is true, then the forms good and it will submit
     $(".errormsg").hide();
     console.log(teacher);
-    if(department=="(Pick)" || className=="(Pick Your Class)" || className=="" || teacher=="" || review=="" || letterGrade==""){
+    if(department=="(Pick)" || className=="(Pick Your Class)" || className=="" || teacher=="" || review=="" || letterGrade=="" ){ //add || starRating=""
       wassup=false;
     }
     if(!wassup){
       $("#rateerror").show();
     }
     return wassup;
-
 }
 
 firebase.auth().onAuthStateChanged(firebaseUser=>{
