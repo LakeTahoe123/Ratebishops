@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <meta charset="utf-8">
+</head>
+
+  <form id = "searchForm">
+    Search for a teacher/class.
+    <input type="text" id="textField"><br>
+    <input type="radio" id="classOption" name="searchType" value="class" onchange="classSelected()"> Class<br>
+    <input type="radio" id="teacherOption" name="searchType" value="teacher" onchange="teacherSelected()"> Teacher<br>
+
+  </form>
+  <select id="department" onchange="changeClasses()">
+    <option value="" disabled selected>(Pick the Department)</option>
+    <option value="SCIENCE">Science</option>
+    <option value="HISTORY">History</option>
+    <option value="ENGLISH">English</option>
+    <option value="LANGUAGE">Language</option>
+    <option value="COMPUTERSCIENCE">Computer Science</option>
+    <option value="ARTS">Arts</option>
+    <option value="MATH">Math</option>
+    <option value="RELIGION">Religion</option>
+    <option value="INDEPENDENT ELECTIVES">Other</option>
+  </select><br>
+  <select id="languageSelect" form="searchForm">
+    <option value="" disabled selected>(Pick)</option>
+    <option value="CHINESE">Chinese</option>
+    <option value="FRENCH">French</option>
+    <option value="LATIN">Latin</option>
+    <option value="SPANISH">Spanish</option>
+  </select><br>
+  <input type="submit" form="searchForm">
+
+
+  <script src = "search.js"></script>
+</html>

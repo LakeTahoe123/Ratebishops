@@ -29,114 +29,20 @@
     }.rating {
     float:left;
     }
-
-/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
-   follow these rules. Every browser that supports :checked also supports :not(), so
-   it doesn’t make the test unnecessarily selective */
-.rating:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-    clip:rect(0,0,0,0);
-}
-
-.rating:not(:checked) > label {
-    float:right;
-    width:1em;
-    padding:0 .1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:200%;
-    line-height:1.2;
-    color:#ddd;
-    /*text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);*/
-}
-
-.rating:not(:checked) > label:before {
-    content: '★ ';
-}
-
-.rating > input:checked ~ label {
-    color: #f70;
-    /*text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);*/
-}
-
-.rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label {
-    color: yellow;
-    /*text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);*/
-}
-
-.rating > input:checked + label:hover,
-.rating > input:checked + label:hover ~ label,
-.rating > input:checked ~ label:hover,
-.rating > input:checked ~ label:hover ~ label,
-.rating > label:hover ~ input:checked ~ label {
-    color: #ea0;
-    /*text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);*/
-}
-
-.rating > label:active {
-    position:relative;
-    top:2px;
-    left:2px;
-}
-
-.rating {
-    float:left;
-}
-
-/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
-   follow these rules. Every browser that supports :checked also supports :not(), so
-   it doesn’t make the test unnecessarily selective */
-.rating:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-    clip:rect(0,0,0,0);
-}
-
-/*.rating:not(:checked) > label {
-    float:right;
-    width:1em;
-    padding:0 .1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:200%;
-    line-height:1.2;
-    color:#ddd;
-    /*text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);*/
-}
-
-.rating:not(:checked) > label:before {
-    content: '★ ';
-}
-
-.rating > input:checked ~ label {
-    color: #f70;
-    /*text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);*/
-}
-
-.rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label {
-    color: gold;
-    /*text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);*/
-}
-
-.rating > input:checked + label:hover,
-.rating > input:checked + label:hover ~ label,
-.rating > input:checked ~ label:hover,
-.rating > input:checked ~ label:hover ~ label,
-.rating > label:hover ~ input:checked ~ label {
-    color: #ea0;
-    /*text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);*/
-}
-
-.rating > label:active {
-    position:relative;
-    top:2px;
-    left:2px;
-}
+    .rating-stars a {
+      display: inline-block;
+      width: 64px;
+      height: 64px;
+      background-repeat: no-repeat;
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4IgogICB3aWR0aD0iNjRweCIgaGVpZ2h0PSI2NHB4IiB2aWV3Qm94PSIwIDAgNjQgNjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDY0IDY0IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSJub25lIiBzdHJva2U9IiNBN0E5QUMiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBwb2ludHM9IjMxLjg2Niw2LjYxOCA0MC4wOSwyMy4yODEgNTguNDc5LDI1Ljk1MyA0NS4xNzIsMzguOTIzIDQ4LjMxMyw1Ny4yMzkgMzEuODY2LDQ4LjU5MiAxNS40MTgsNTcuMjM5IDE4LjU2LDM4LjkyMyA1LjI1MywyNS45NTMgMjMuNjQyLDIzLjI4MSAiLz48L3N2Zz4=");
+      outline: none;
+    }
+    .rating-stars a.hover {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeD0iMHB4IiB5PSIwcHgiCiAgIHdpZHRoPSI2NHB4IiBoZWlnaHQ9IjY0cHgiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNjQgNjQiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIGZpbGw9IiM1MUFFQ0QiIHN0cm9rZT0iIzUxQUVDRCIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHBvaW50cz0iMzEuODY2LDYuNjE4IDQwLjA5LDIzLjI4MSA1OC40NzksMjUuOTUzIDQ1LjE3MiwzOC45MjMgNDguMzEzLDU3LjIzOSAzMS44NjYsNDguNTkyIDE1LjQxOCw1Ny4yMzkgMTguNTYsMzguOTIzIDUuMjUzLDI1Ljk1MyAyMy42NDIsMjMuMjgxICIvPjwvc3ZnPgo=");
+    }
+    .rating-stars a.selected {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4IgogICB3aWR0aD0iNjRweCIgaGVpZ2h0PSI2NHB4IiB2aWV3Qm94PSIwIDAgNjQgNjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDY0IDY0IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkVDMjBGIiBzdHJva2U9IiNGRUMyMEYiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBwb2ludHM9IjMxLjg2Niw2LjYxOCA0MC4wOSwyMy4yODEgNTguNDc5LDI1Ljk1MyA0NS4xNzIsMzguOTIzIDQ4LjMxMyw1Ny4yMzkgMzEuODY2LDQ4LjU5MiAxNS40MTgsNTcuMjM5IDE4LjU2LDM4LjkyMyA1LjI1MywyNS45NTMgMjMuNjQyLDIzLjI4MSAiLz48L3N2Zz4=");
+    }
   </style>
 </head>
 
@@ -181,8 +87,10 @@
             </div>
 
             <div class="input-field col s12">
-              <label for="teacher">Teacher </label>
-              <input type="text" class="validate" name="teacher" id="teacher" required/>
+              <select id="teacher">
+                <option value="" disabled selected>(Pick a department first.)</option>
+              </select>
+              <label>Teacher</label>
             </div>
 
             <div class="input-field col s12">
@@ -202,19 +110,14 @@
               <label>What grade did you get?</label>
             </div>
             <div class="col s12 browser-default">
-              <fieldset class="rating browser-default">
-                  <input  class="browser-default" id="star5" name="rating" value="5" /><label for="star5" title="Really good">5 stars</label>
-                  <input  class="browser-default" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
-                  <input  class="browser-default" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
-                  <input  class="browser-default" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
-                  <input class="browser-default" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
-              </fieldset>
+              <div class="rating-stars">
+                <a href="" data-rating="1"></a><a href="" data-rating="2"></a><a href="" data-rating="3"></a><a href="" data-rating="4"></a><a href="" data-rating="5"></a>
+              </div>
             </div>
             <div class="input-field col s12">
               <textarea id="review" class="materialize-textarea"></textarea>
               <label for="review">Review</label>
             </div>
-
           </div>
         </div>
         <div class="card-action right-align">
@@ -226,7 +129,7 @@
         <!-- Modal Structure -->
         <div id="modal1" class="modal">
           <div class="modal-content">
-              <h4>Thanks for Submiting Your Review!</h4>
+              <h4 id="modalMessage">Thanks for Submiting Your Review!</h4>
               <p>Click the button to redirect to your home page.</p>
             </div>
             <div class="modal-footer">

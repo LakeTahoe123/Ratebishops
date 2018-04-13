@@ -25,7 +25,7 @@ const btnSignup=document.getElementById("signup");
 
 
 btnSignup.addEventListener('click', e =>{
-  //TODO find a way to integrate SubmitForm into this //?? idk what this even means
+  //TODO find a way to integrate SubmitForm into this 
   const email=txtEmail.value;
   const pass=txtPassword.value;
   const auth=firebase.auth();
