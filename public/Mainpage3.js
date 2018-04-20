@@ -49,21 +49,31 @@ firebase.database().ref("/lastFive").once("value").then(function(snapshot) {
 
 document.getElementById("rateBtn").addEventListener('click', e =>{
   console.log("clicked");
-  window.location.href = '../rate.html';
+  window.location.href = '../rate';
   //promise.catch(e =>console.log(e.message));
 });
 
 console.log("ESKETIT GOT checkpoint 0");
-var highestRatingRef = firebase.database().ref("/teacher/{teacherName}/avgRating");
+var highestRatingRef = firebase.database().ref("/teacher/");
 console.log("SUH DUDE got checkpoint1");
-highestRatingRef.orderByValue().limitToFirst(5).on("value", function(snapshot) {
-  console.log("YE YE GOT CHECKPOINT 2");
-  console.log(snapshot.value());
-  snapshot.forEach(function(data) {
-    console.log("WASSSA WASSSA BITCONNECT got checkpoint 3");
-    console.log("The " + data.key + " average rating is " + data.val());
-  });
-});
+arrayOfRatingVals = [];
+arrayOfTeacherNames = [];
+highestRatingRef.forEach(function(data){
+  console.log("inside for each")
+  current=data.avgRating.val();
+  arrayOfRatingVals.append(current);
+  console.log('before appending teacher name')
+  arrayOfTeacherNames.append(data);
+})
+console.log('does this work?')
+// highestRatingRef.orderByValue().limitToFirst(5).on("value", function(snapshot) {
+//   console.log("YE YE GOT CHECKPOINT 2");
+//   console.log(snapshot.val());
+//   snapshot.forEach(function(data) {
+//     console.log("WASSSA WASSSA BITCONNECT got checkpoint 3");
+//     console.log("The " + data.key + " average rating is " + data.val());
+//   });
+// });
 
 firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){

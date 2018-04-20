@@ -83,7 +83,6 @@ firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){
     console.log(firebaseUser);
     console.log(firebaseUser.uid);
-    console.log("should redirect here.");
     window.location.href = '../welcome.html';
 
   }else{

@@ -48,9 +48,8 @@ oReq1.addEventListener("load", teachListener);
 oReq1.open("GET", "../teachers.txt");
 oReq1.send();
 
-function teachListener () {
+function teachListener() {
   allTeachers=this.responseText; //i honestly have no clue what this is sike this is the text of the teachers.txt file
-
 }
 
 function reqListener () {
@@ -196,6 +195,7 @@ function pushOrSetData(department,className,teacher,review,letterGrade, starRati
   var publicRef = firebase.database().ref("tbs/"+department+"/"+className);
   refString="/tbs/"+department+"/"+className+"/"+teacher+"/";
   console.log(refString);
+  console.log(userReviews);
   if(userReviews.includes(refString)){
     $('#modal1').modal('open');
     document.getElementById("modalMessage").innerHTML="You have already reviewed this class, therefore your review was not accepted.";
@@ -321,4 +321,14 @@ ready(function(){
     }
   });
 
+});
+
+firebase.auth().onAuthStateChanged(firebaseUser=>{
+  if(firebaseUser){
+    var userId = firebase.auth().currentUser.uid;
+    console.log(userId);
+  }else{
+    console.log("not logged in");
+    window.location.href = '../login.html';
+  }
 });

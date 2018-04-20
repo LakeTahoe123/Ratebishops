@@ -1,38 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
   <meta charset="utf-8">
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
 </head>
+    <p>
+      <input name="group1" type="radio" id="classOption" onchange="classSelected()" />
+      <label for="classOption">Class</label>
+    </p>
+    <p>
+      <input name="group1" type="radio" id="teacherOption" onchange="teacherSelected()" />
+      <label for="teacherOption">Teacher</label>
+    </p>
 
-  <form id = "searchForm">
     Search for a teacher/class.
-    <input type="text" id="textField"><br>
-    <input type="radio" id="classOption" name="searchType" value="class" onchange="classSelected()"> Class<br>
-    <input type="radio" id="teacherOption" name="searchType" value="teacher" onchange="teacherSelected()"> Teacher<br>
+    <input type="text" id="autocomplete-input" class="autocomplete">
 
-  </form>
-  <select id="department" onchange="changeClasses()">
-    <option value="" disabled selected>(Pick the Department)</option>
-    <option value="SCIENCE">Science</option>
-    <option value="HISTORY">History</option>
-    <option value="ENGLISH">English</option>
-    <option value="LANGUAGE">Language</option>
-    <option value="COMPUTERSCIENCE">Computer Science</option>
-    <option value="ARTS">Arts</option>
-    <option value="MATH">Math</option>
-    <option value="RELIGION">Religion</option>
-    <option value="INDEPENDENT ELECTIVES">Other</option>
-  </select><br>
-  <select id="languageSelect" form="searchForm">
-    <option value="" disabled selected>(Pick)</option>
-    <option value="CHINESE">Chinese</option>
-    <option value="FRENCH">French</option>
-    <option value="LATIN">Latin</option>
-    <option value="SPANISH">Spanish</option>
-  </select><br>
-  <input type="submit" form="searchForm">
+  <br>
+  <a id="postReview" onclick="formSubmit()" class="btn center green waves-effect waves-light">Search</a>
 
 
   <script src = "search.js"></script>

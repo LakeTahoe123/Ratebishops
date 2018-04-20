@@ -52,7 +52,7 @@ firebase.database().ref("/lastFive").once("value").then(function(snapshot) {
 
 document.getElementById("rateBtn").addEventListener('click', e =>{
   console.log("clicked");
-  window.location.href = '../rate.html';
+  window.location.href = '../rate';
   //promise.catch(e =>console.log(e.message));
 
 });

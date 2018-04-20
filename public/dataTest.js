@@ -6,11 +6,12 @@ var uid;
 
 document.getElementById('postReview').addEventListener("click", e=>(
   var department=document.getElementById("department").value;
-  var className=documentent.getElementByID("className").value;
+  var className=document.getElementByID("className").value;
   var teacher=document.getElementById("teacher").value;
   var review=document.getElementById("review").value;
   var letterGrade=document.getElementByID("letterGrade").value;
 }
+
 
 
 function writeUserData(department, className, teacher, review, letterGrade) {
