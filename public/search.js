@@ -11,28 +11,34 @@
   firebase.initializeApp(config);
 }());
 
+$("#searchError").hide();
 $('#searchForm').submit(function () { //jQuery for making the page not redirect when submitted.
  formSubmit();
  return false;
 });
 
-function formSubmit() { //triggers when form is submitted
+function formSubmit() { //triggers when form is submitted 🔍
   console.log("submitted");
   var teacherPicked = document.getElementById("teacherOption").checked;
   var classPicked = document.getElementById("classOption").checked;
-  if(teacherPicked){
-    window.location.href = '../teacher?teacher='+document.getElementById("autocomplete-input").value;
+  if(!document.getElementById("autocomplete-input").value.replace(/\s/g, '').length){
+    $("#searchError").show();
   }else{
-    var className=document.getElementById("autocomplete-input").value;
-    var dept="";
-    for (i in deptClassList) {
-      if(deptClassList[i].includes(className)) {
-        dept=deptList[i];
-        break; // 🌺🌺🌺 I like this emoji 🌺🌺🌺
+    if(teacherPicked){
+      window.location.href = '../teacher?teacher='+document.getElementById("autocomplete-input").value;
+    }else{
+      var className=document.getElementById("autocomplete-input").value;
+      var dept="";
+      for (i in deptClassList) {
+        if(deptClassList[i].includes(className)) {
+          dept=deptList[i];
+          break; // 🌺🌺🌺 I like this emoji 🌺🌺🌺
+        }
       }
+      window.location.href = '../class?dept='+dept+"=class="+className;
     }
-    window.location.href = '../class?dept='+dept+"=class="+className;
   }
+
 }
 
 
@@ -56,13 +62,11 @@ function classListener() {
 }
 
 function getTeachersList(){
-  console.log("teacher list running");
   var tList=getclasses(allTeachers);
   return tList;
 }
 
 function getClassesList(){
-  console.log("class list running");
   var cList=getclasses(allClasses);
   return cList;
 }
@@ -101,7 +105,7 @@ function initAutocomplete(teacherList){
     data: jsonData, // this is the data that gets fed into the materialze autocomplete
     limit: 20,
     onAutocomplete: function(val) {
-      console.log("complete");
+      $("#searchError").hide();
       // Callback
     },
     minLength: 2, // The amount of characters that the user types before autocomplete starts

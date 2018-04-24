@@ -25,7 +25,7 @@ const btnSignup=document.getElementById("signup");
 
 
 btnSignup.addEventListener('click', e =>{
-  //TODO find a way to integrate SubmitForm into this 
+  //TODO find a way to integrate SubmitForm into this
   const email=txtEmail.value;
   const pass=txtPassword.value;
   const auth=firebase.auth();
@@ -49,7 +49,7 @@ function writeUserData(uid1) {
   firebase.database().ref("users/"+uid1+"/publicData").set({
     Grade: grade1
   }).then(() => {
-    window.location.replace("../welcome.html");
+    window.location.replace("../Mainpage.html");
   });
 }
 
@@ -80,4 +80,4 @@ firebase.auth().onAuthStateChanged(firebaseUser=>{
   }else{
     console.log("not logged in");
   }
-})
+});

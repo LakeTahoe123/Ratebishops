@@ -133,7 +133,7 @@
               <p>Click the button to redirect to your home page.</p>
             </div>
             <div class="modal-footer">
-              <a href="../welcome.html" class="modal-action modal-close waves-effect waves-green btn-flat">Finish</a>
+              <a href="../Mainpage.html" class="modal-action modal-close waves-effect waves-green btn-flat">Finish</a>
             </div>
           </div>
       </form>

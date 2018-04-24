@@ -1,0 +1,50 @@
+[debug] [2018-04-23T21:52:07.560Z] ----------------------------------------------------------------------
+[debug] [2018-04-23T21:52:07.563Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-04-23T21:52:07.563Z] CLI Version:   3.18.2
+[debug] [2018-04-23T21:52:07.564Z] Platform:      linux
+[debug] [2018-04-23T21:52:07.564Z] Node Version:  v9.4.0
+[debug] [2018-04-23T21:52:07.564Z] Time:          Mon Apr 23 2018 14:52:07 GMT-0700 (PDT)
+[debug] [2018-04-23T21:52:07.564Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-04-23T21:52:07.581Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-23T21:52:07.581Z] > authorizing via signed-in user
+[debug] [2018-04-23T21:52:07.583Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-04-23T21:52:07.583Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/zUnHk54NCxgm3C8jesg9aKZx0mj4_eg1kOu-jjd3d-I',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Apr 23 2018 14:52:07 GMT-0700 (PDT)
+[debug] [2018-04-23T21:52:07.935Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-23T21:52:08.055Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ratebishops-6b27c  
+  
+ Mon Apr 23 2018 14:52:08 GMT-0700 (PDT)
+[debug] [2018-04-23T21:52:08.721Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-23T21:52:08.724Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/ratebishops-6b27c/tokens  
+  
+ Mon Apr 23 2018 14:52:08 GMT-0700 (PDT)
+[debug] [2018-04-23T21:52:09.178Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-23T21:52:09.181Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/ratebishops-6b27c  
+  
+ Mon Apr 23 2018 14:52:09 GMT-0700 (PDT)
+[debug] [2018-04-23T21:52:09.676Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/home/khb/School/Programming/BishopsAttendance'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-04-23T21:52:11.526Z] Fetching environment
+[debug] [2018-04-23T21:52:11.533Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/62112601506:getServerAppConfig  
+  
+ Mon Apr 23 2018 14:52:11 GMT-0700 (PDT)
+[debug] [2018-04-23T21:52:11.533Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/62112601506/clients/_:getWebAppConfig  
+  
+ Mon Apr 23 2018 14:52:11 GMT-0700 (PDT)
+[debug] [2018-04-23T21:52:11.927Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-23T21:52:11.928Z] Starting @google-cloud/functions-emulator
+[debug] [2018-04-23T21:52:12.154Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
+[debug] [2018-04-23T21:52:14.002Z] Parsing function triggers
+[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.

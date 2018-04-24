@@ -7,7 +7,17 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
+<style>
+.errormsg{
+  color: red;
+  background-color: #ffc9c9;
+  border: red;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;
+  padding: 7px;
+}
+</style>
 </head>
     <p>
       <input name="group1" type="radio" id="classOption" onchange="classSelected()" />
@@ -20,6 +30,7 @@
 
     Search for a teacher/class.
     <input type="text" id="autocomplete-input" class="autocomplete">
+    <span id="searchError" class="errormsg">Please enter some text for class/teacher.</span>
 
   <br>
   <a id="postReview" onclick="formSubmit()" class="btn center green waves-effect waves-light">Search</a>
