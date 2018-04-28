@@ -49,7 +49,7 @@ function writeUserData(uid1) {
   firebase.database().ref("users/"+uid1+"/publicData").set({
     Grade: grade1
   }).then(() => {
-    window.location.replace("../Mainpage.html");
+    window.location.replace("../homepage");
   });
 }
 

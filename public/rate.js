@@ -38,7 +38,7 @@ document.getElementById('postReview').addEventListener('click', e=>{
 
 });
 
-$(document).ready(function() { //stuff that exectures when the page is loaded
+$(document).ready(function() {
   $('select').material_select();
   $('#modal1').modal();
 });
@@ -85,32 +85,26 @@ function changeClasses(){ //add the correct class options to the select (classes
 
 }
 
-function getNumStars() { //TODO check if this code is essential
-  console.log(document.getElementById('star1').checked)
-  for (i = 1; i <= 5; i++) {
-    spider='star'
-    spider +=i
-    if (document.getElementById(spider).checked) {
-      console.log(spider)
-      return spider;
-    }
-  }
-}
+// function getNumStars() {
+//   console.log(document.getElementById('star1').checked)
+//   for (i = 1; i <= 5; i++) {
+//     spider='star'
+//     spider +=i
+//     if (document.getElementById(spider).checked) {
+//       console.log(spider)
+//       return spider;
+//     }
+//   }
+// }
 
 function changeLangClasses(){
   $('#className').empty()
   $('#teacher').empty()
-
-
   //this will insert the correct language classes when user changes their language
   var cList=getclasses(document.getElementById("languageSelect").value, allClasses);
   var tList=getclasses(document.getElementById("languageSelect").value, allTeachers);
-
-
   insertClasses(cList, document.getElementById("className"));
   insertClasses(tList, document.getElementById("teacher"));
-
-
 }
 
 function insertClasses(classList, selectElement){
@@ -119,10 +113,8 @@ function insertClasses(classList, selectElement){
       var option = document.createElement("option"); //this logic makes the placeholder option first
       if(selectElement==document.getElementById("teacher")){
         option.text = "(Pick Your Teacher)";
-
       }else{
         option.text = "(Pick Your Class)";
-
       }
       selectElement.add(option);
       selectElement.options[0].disabled = true;
@@ -217,7 +209,7 @@ function pushOrSetData(department,className,teacher,review,letterGrade, starRati
 }
 
 function validateForm(department,className,teacher,review,letterGrade, starRating) {
-    var wassup=true; //if wassup is true, then the forms good and it will submit
+    var wassup=true;
     $(".errormsg").hide();
     if(department=="(Pick)" || className=="(Pick Your Class)" || className=="" || teacher=="" || teacher=="(Pick Your Teacher)" || review=="" || letterGrade=="" || starRating==undefined ){ //add || starRating=""
       wassup=false;
@@ -246,7 +238,7 @@ firebase.auth().onAuthStateChanged(firebaseUser=>{
     });
 
   }else{
-    window.location.href = '../login.html';
+    window.location.href = '../login';
     console.log("not logged in");
   }
 });
@@ -329,6 +321,6 @@ firebase.auth().onAuthStateChanged(firebaseUser=>{
     console.log(userId);
   }else{
     console.log("not logged in");
-    window.location.href = '../login.html';
+    window.location.href = '../login';
   }
 });

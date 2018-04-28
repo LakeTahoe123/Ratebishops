@@ -2,12 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png" />
 
     <style>
     html,
@@ -19,11 +19,7 @@
       margin-bottom: 20px;
       text-align:center;display:block;
 
-    }
-    #signuplink {
-      text-decoration: underline;
-    }
-    .errormsg{
+    }.errormsg{
       color: red;
       background-color: #ffc9c9;
       border: red;
@@ -31,7 +27,7 @@
       border-width: 2px;
       border-radius: 5px;
       padding: 7px;
-      margin-bottom:1%;
+      margin-bottom:10px;
     }
   </style>
 </head>
@@ -41,31 +37,51 @@
     <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
       <form>
         <div class="card-content">
-          <span class="card-title">Login to RateBishops</span>
+          <span class="card-title">Create an Account</span>
           <div class="row">
             <div class="input-field col s12">
               <label for="email">Email address</label>
               <input type="email" class="validate" name="email" id="email" required/>
+              <span id="emailerror" class="errormsg">Email is required.</span>
             </div>
 
             <div class="input-field col s12">
               <label for="password">Password </label>
               <input type="password" class="validate" name="password" id="password" required/>
+              <span id="passerror" class="errormsg">please enter a password.</span>
+              <br>
             </div>
+            <br>
+
+            <div class="col s12">
+              <label for="grade">Grade Level</label>
+              <select id="grade">
+                <option disabled selected>Choose your option</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+          </div>
+          <br>
+          <span id="gradeerror" class="errormsg">please select your grade level.</span>
+
           </div>
         </div>
         <div class="card-action right-align">
-          <a id="login" class="waves-effect center green waves-light btn">Login</a>
-          <br>
-          <span id="errors" class="errormsg">Check that all fields are filled out correctly.</span>
-
+          <a id="signup" class="btn center green waves-effect waves-light">Create Account</a>
+          <span id="errors" class="errormsg">please check that all fields are filled out correctly.</span>
 
         </div>
+
       </form>
-      <a id="signuplink" href="./signup.html">New here? Create an Account.</a>
+
     </div>
   </div>
-  <script src="login.js"></script>
+  <script src="signup.js"></script>
 </body>
 
 </html>

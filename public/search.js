@@ -124,6 +124,6 @@ firebase.auth().onAuthStateChanged(firebaseUser=>{
 
   }else{
     console.log("not logged in");
-    window.location.href = '../login.html';
+    window.location.href = '../login';
   }
 });

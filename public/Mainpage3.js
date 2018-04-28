@@ -17,7 +17,6 @@
 
 firebase.database().ref("/lastFive").once("value").then(function(snapshot) {
   var ratingPaths = snapshot.val(); // 🍇🐨🍇 getting lastfive pathlist 🍇🐨🍇
-  console.log(ratingPaths);
   var lastFiveList = [];
   var pathList = [];
   var teacherList = [];
@@ -25,7 +24,6 @@ firebase.database().ref("/lastFive").once("value").then(function(snapshot) {
   for (var key in ratingPaths) {
     if (ratingPaths.hasOwnProperty(key)) {
       var val = ratingPaths[key];
-
       if(val.slice(-16)=="reviewsAndGrades"){ //TODO MAKE THIS RELIABLE, dont depend on the node, just make a regex to cut everything before the last slash
         var teachers = val.slice(0, -17);
       }else{
@@ -39,15 +37,10 @@ firebase.database().ref("/lastFive").once("value").then(function(snapshot) {
       pathList.push(val);
     }
   }
-  for (var i=4; i>=0; i--){
-    var teacherElement=document.getElementById("t"+(i+1));
-    teacherElement.innerHTML=teacherList[i];
-    teacherElement.href="teacher"+"?teacher="+teacherList[i];
-  }
+
   pathList.reverse();
   teacherList.reverse();
 
-  console.log(pathList);
   for (var i = 0; i < pathList.length; i++){
     refList[i]=firebase.database().ref(pathList[i]).once('value');
   }
@@ -56,7 +49,6 @@ firebase.database().ref("/lastFive").once("value").then(function(snapshot) {
   const all_pr = Promise.all(refList).then(results => { // collecting lastfive reviews
     for(var i = 0; i < refList.length; i++) { // iterates through the reflist
       ratingsList[i] = results[i].val();
-      console.log("ratinglist:"+ratingsList[i]);
       var timeago = Date.now()-ratingsList[i]["timestamp"];
       var teacherCardDiv = $("#teacherCard").clone().prop('id', 'card'+i);
       teacherCardDiv.find("*").each(function() { // appends number to each of the html child elements
@@ -67,46 +59,45 @@ firebase.database().ref("/lastFive").once("value").then(function(snapshot) {
       $("#teacher"+i).attr("href", "teacher?teacher="+teacherList[i]);
     }
     $("#teacherCard").hide();
-    console.log(ratingsList);
   });
 });
 
+const dbRef = firebase.database().ref();
+const highestRatedTeachers = dbRef.child("teachers").orderByChild("avgRating").limitToLast(5); // 📸🦖😘 ez 😘🦖📸
+
+highestRatedTeachers.once("value").then(function(snapshot) {
+  var bestTeacherList = [];
+  var teacherRatingList = [];
+  snapshot.forEach(function(child) { // this is the 5 highest rated teachers
+    bestTeacherList.push(child.ref.key);
+    var teacherJSON = child.val();
+    teacherRatingList.push(teacherJSON["avgRating"]);
+  });
+  console.log(bestTeacherList);
+  for (var i=0; i < bestTeacherList.length; i++){
+    $("#t"+i).html(bestTeacherList[i]+": "+teacherRatingList[i]+" stars");
+    $("#t"+i).attr("href", "teacher?teacher="+bestTeacherList[i]);
+  }
+});
+
+
+
+
 document.getElementById("rateBtn").addEventListener('click', e =>{
-  console.log("clicked");
   window.location.href = '../rate';
   //promise.catch(e =>console.log(e.message));
 });
 
-console.log("ESKETIT GOT checkpoint 0");
-var highestRatingRef = firebase.database().ref("/teacher/");
-console.log("SUH DUDE got checkpoint1");
-arrayOfRatingVals = [];
-arrayOfTeacherNames = [];
-// highestRatingRef.forEach(function(data){
-//   console.log("inside for each")
-//   current=data.avgRating.val();
-//   arrayOfRatingVals.append(current);
-//   console.log('before appending teacher name')
-//   arrayOfTeacherNames.append(data);
-// })
-// highestRatingRef.orderByValue().limitToFirst(5).on("value", function(snapshot) {
-//   console.log("YE YE GOT CHECKPOINT 2");
-//   console.log(snapshot.val());
-//   snapshot.forEach(function(data) {
-//     console.log("WASSSA WASSSA BITCONNECT got checkpoint 3");
-//     console.log("The " + data.key + " average rating is " + data.val());
-//   });
-// });dd
 document.getElementById("logout").addEventListener('click', e =>{
   firebase.auth().signOut().then(function() {
-    window.location.href = '../login.html';
+    window.location.href = '../login';
   }, function(error) {
     console.log(error);
   });
 });
 
 function getUnits(timeago){
-  var unitTime; //TODO check for plural/notplural time. for example, if it is only 1, it shouldnt be 1 hours, correct to 1 hour
+  var unitTime;
   if(timeago<60000){
     unitTime=Math.round(timeago/1000);
     if (unitTime > 1){
@@ -139,12 +130,15 @@ function getUnits(timeago){
   }
 }
 
+$( document ).ready(function() {
+    $(".dropdown-button").dropdown();
+});
+
 firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){
     var userId = firebase.auth().currentUser.uid;
-    console.log(userId);
   }else{
     console.log("not logged in");
-    window.location.href = '../login.html';
+    window.location.href = '../login';
   }
 });

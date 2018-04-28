@@ -16,46 +16,32 @@ var url = window.location.href;
 var deptName=decodeURI(url.split("=")[1]);
 var className=decodeURI(url.split("=")[3]);
 
-var pathList=[];
 
 $("#teacherCard").hide();
-
-firebase.database().ref("/tbs/"+deptName+"/"+className).once("value").then(function(snapshot) {
+var classRef = firebase.database().ref("/tbs/"+deptName+"/"+className);
+classRef.once("value").then(function(snapshot) {
   teacherJSON=snapshot.val();
   if(teacherJSON!==null){
     var i=0;
+    sortedList=sortJSON(teacherJSON);
 
-    for (var key in teacherJSON) {
-      if (teacherJSON.hasOwnProperty(key)) {
-        var val = teacherJSON[key];
-        for (var key1 in val) {
-          var val1=val[key1];
-          var div = document.createElement("div");
-          var timeago=Date.now()-val1["timestamp"];
-          var teacherCardDiv = $("#teacherCard").clone().prop('id', 'card'+i);
-          teacherCardDiv.find("*").each(function() { // appends number to each of the html child elements
-            this.id = this.id + i;
-          });
-          teacherCardDiv.appendTo("#cardColumn");
-          teacherCardDiv.show();
-          console.log(key);
-          console.log(i);
-
-          $("#teacherName"+i).html(" "+key); // 🍰🍦🍧 puts all the actual content into the card 🍰🍦🍧
-          $("#stars"+i).html("Stars (out of 5): "+val1["stars"]); //puts all the actual content into the card
-          $("#grade"+i).html("Grade this person got: "+val1["grade"]); //puts all the actual content into the card
-          $("#time"+i).html(getUnits(timeago)+" ago");
-          $("#reviewText"+i).html(val1["review"]);
-          console.log($("#teacherLink")+i);
-          $("#teacherLink"+i).attr("href", "teacher?teacher="+key);
-          pathList.push(key);
-          i++;
-
-        }
-      }
-
+    for (var i in sortedList) {
+        var div = document.createElement("div");
+        var timeago=Date.now()-sortedList[i][2];
+        var teacherCardDiv = $("#teacherCard").clone().prop('id', 'card'+i);
+        teacherCardDiv.find("*").each(function() { // appends number to each of the html child elements
+          this.id = this.id + i;
+        });
+        teacherCardDiv.appendTo("#cardColumn");
+        teacherCardDiv.show();
+        $("#teacherName"+i).html(" "+sortedList[i][0]); // 🍰🍦🍧 puts all the actual content into the card 🍰🍦🍧
+        $("#stars"+i).html(getStarsText(sortedList[i][1]["stars"])); 
+        $("#grade"+i).html("Grade this person got: "+sortedList[i][1]["grade"]);
+        $("#time"+i).html(getUnits(timeago)+" ago");
+        $("#reviewText"+i).html(sortedList[i][1]["review"]);
+        $("#teacherLink"+i).attr("href", "teacher?teacher="+sortedList[i][0]);
+        i++;
     }
-    console.log(pathList);
     document.getElementById("teacherName").innerHTML=className;
 
   }else{
@@ -69,9 +55,16 @@ firebase.database().ref("/tbs/"+deptName+"/"+className).once("value").then(funct
   }
 });
 
+function getStarsText(avgRating){
+  var Starstxt="";
+  for (var i=0; i<avgRating; i++){
+    Starstxt+="<i class=\"icon-gray material-icons\">star</i>"
+  }
+  return Starstxt;
+}
 
 function getUnits(timeago){
-  var unitTime; //TODO check for plural/notplural time. for example, if it is only 1, it shouldnt be 1 hours, correct to 1 hour
+  var unitTime;
   if(timeago<60000){
     unitTime=Math.round(timeago/1000);
     if (unitTime > 1){
@@ -104,12 +97,35 @@ function getUnits(timeago){
   }
 }
 
+function sortJSON(jsonObject){
+  var i=0;
+  console.log(jsonObject);
+  var teacherList=[];
+  var jsonlist=[];
+  var sortedList=[]
+  for (key in jsonObject){
+    teacherObject = jsonObject[key];
+    for (reviewKey in teacherObject){
+      teacherList.push([key]);
+      sortedList.push([key,teacherObject[reviewKey],teacherObject[reviewKey]["timestamp"]])
+      jsonlist.push(teacherObject[reviewKey]);
+      console.log(teacherObject[reviewKey]);
+    }
+    i++
+  }
+  sortedList.sort(function(a,b){
+    return b[2]-a[2];
+  });
+
+  console.log(sortedList);
+  return sortedList;
+}
+
 firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){
     var userId = firebase.auth().currentUser.uid;
-
   }else{
     console.log("not logged in");
-    window.location.href = '../login.html';
+    window.location.href = '../login';
   }
 });

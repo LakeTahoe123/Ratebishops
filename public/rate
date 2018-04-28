@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png" />
 
     <style>
     html,
@@ -47,6 +48,7 @@
 </head>
 
 <body>
+
   <div class="valign-wrapper row login-box">
     <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
       <form>
@@ -133,7 +135,7 @@
               <p>Click the button to redirect to your home page.</p>
             </div>
             <div class="modal-footer">
-              <a href="../Mainpage.html" class="modal-action modal-close waves-effect waves-green btn-flat">Finish</a>
+              <a href="../homepage" class="modal-action modal-close waves-effect waves-green btn-flat">Finish</a>
             </div>
           </div>
       </form>

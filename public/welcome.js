@@ -23,7 +23,7 @@ var userId;
 
 btnLogout.addEventListener('click', e =>{
   firebase.auth().signOut().then(function() {
-    window.location.href = '../login.html';
+    window.location.href = '../login';
   }, function(error) {
     console.log(error);
   });
@@ -47,6 +47,6 @@ firebase.auth().onAuthStateChanged(firebaseUser=>{
     });
   }else{
     console.log("not logged in");
-    window.location.href = '../login.html';
+    window.location.href = '../login';
   }
 });

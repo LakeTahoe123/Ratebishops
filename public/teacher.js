@@ -31,49 +31,61 @@ firebase.database().ref("/teachers/"+teacherName).once("value").then(function(sn
     }
 
     document.getElementById("teacherName").innerHTML=teacherName;
-    document.getElementById("titleHeader").innerHTML="Average Rating: "+avgRating+" stars";
+
+    document.getElementById("titleHeader").innerHTML="Average Rating: "+getStarsText(avgRating);
 
     var timeStampList = [];
     var refList = [];
     var ratingsList = []
     for (var i = 0; i < pathList.length; i++){
-      refList[i]=firebase.database().ref(pathList[i]).once('value');
+      refList[i]=firebase.database().ref(pathList[i]).orderByChild("timestamp").once('value');
     }
     const all_pr = Promise.all(refList).then(results => { // 🤯🤯🤯 collecting all the reviews for this teacher 🤯🤯🤯
       $("#teacherCard").show();
+      var jsonList=[];
+      results.forEach(function(child) {
+        var teacherJSON = child.val();
+        jsonList.push(teacherJSON);
+      });
+
+      jsonList.reverse();
+      pathList.reverse();
+
       for(var i = 0; i < refList.length; i++) { // iterates through the reflist
-        ratingsList[i] = results[i].val();
-        var timeago = Date.now()-ratingsList[i]["timestamp"];
+        var timeago = Date.now()-jsonList[i]["timestamp"];
         var teacherCardDiv = $("#teacherCard").clone().prop('id', 'card'+i);
         teacherCardDiv.find("*").each(function() { // appends number to each of the html child elements
           this.id = this.id + i;
         });
         teacherCardDiv.appendTo("#cardColumn");
 
-        $("#stars"+i).html("Stars (out of 5): "+ratingsList[i]["stars"]); //puts all the actual content into the card
-        $("#grade"+i).html("Grade this person got: "+ratingsList[i]["grade"]); //puts all the actual content into the card
+        $("#stars"+i).html(getStarsText(jsonList[i]["stars"])); // puts all the actual content into the card
+        $("#grade"+i).html("Grade this person got: "+jsonList[i]["grade"]);
         $("#time"+i).html(getUnits(timeago)+" ago");
         $("#className"+i).html(pathList[i].split("/")[3]);
-        $("#reviewText"+i).html(ratingsList[i]["review"]);
-        console.log(pathList[i].split("/"));
+        $("#reviewText"+i).html(jsonList[i]["review"]);
         $("#classLink"+i).attr("href", "class?dept="+pathList[i].split("/")[2]+"=class="+pathList[i].split("/")[3]);
 
       }
       $("#teacherCard").hide();
-
-
-      console.log(ratingsList);
     });
   }else{
     // 😿😿😿 "is null." 😿😿😿
     $("#teacherCard").hide();
-
     $("#titleHeader").html("There are no reviews for this teacher. Do you want to <a href=\"rate\">submit a review?</a>")
   }
 });
 
+function getStarsText(avgRating){
+  var Starstxt="";
+  for (var i=0; i<avgRating; i++){
+    Starstxt+="<i class=\"icon-gray material-icons\">star</i>"
+  }
+  return Starstxt;
+}
+
 function getUnits(timeago){
-  var unitTime; //TODO check for plural/notplural time. for example, if it is only 1, it shouldnt be 1 hours, correct to 1 hour
+  var unitTime;
   if(timeago<60000){
     unitTime=Math.round(timeago/1000);
     if (unitTime > 1){
