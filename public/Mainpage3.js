@@ -63,7 +63,7 @@ firebase.database().ref("/lastFive").once("value").then(function(snapshot) {
 });
 
 const dbRef = firebase.database().ref();
-const highestRatedTeachers = dbRef.child("teachers").orderByChild("avgRating").limitToLast(5); // 📸🦖😘 ez 😘🦖📸
+const highestRatedTeachers = dbRef.child("teachers").orderByChild("avgRating").limitToLast(10); // 📸🦖😘 ez 😘🦖📸
 
 highestRatedTeachers.once("value").then(function(snapshot) {
   var bestTeacherList = [];

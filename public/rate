@@ -3,18 +3,16 @@
   <head>
     <meta charset="utf-8">
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type = "text/javascript" src = "jquery-3.3.1.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="materialize.min.css">
+    <script src="materialize.min.js"></script>
     <link rel="icon" type="image/png" href="favicon.png" />
 
     <style>
     html,
     body,
-    .login-box {
-      height: 100%;
-    }
+
     a{
       margin-bottom: 20px;
       text-align:center;display:block;
@@ -66,6 +64,7 @@
                 <option value="ARTS">Arts</option>
                 <option value="MATH">Math</option>
                 <option value="RELIGION">Religion</option>
+                <option value="PERFORMING ARTS">Performing Arts</option>
                 <option value="INDEPENDENT ELECTIVES">Other</option>
               </select>
               <label>Department</label>
@@ -117,7 +116,7 @@
               </div>
             </div>
             <div class="input-field col s12">
-              <textarea id="review" class="materialize-textarea"></textarea>
+              <textarea id="review" data-length="360" maxlength="360" class="materialize-textarea"></textarea>
               <label for="review">Review</label>
             </div>
           </div>
