@@ -50,35 +50,37 @@ firebase.database().ref("/lastFive").once("value").then(function(snapshot) {
     for(var i = 0; i < refList.length; i++) { // iterates through the reflist
       ratingsList[i] = results[i].val();
       var timeago = Date.now()-ratingsList[i]["timestamp"];
-      $("#teacher"+i).html(teacherList[i]+" - "+pathList[i].split("/")[3]);
-      $("#time"+i).html(getUnits(timeago)+" ago");
+      $("#teacher"+i).text(teacherList[i]+" - "+pathList[i].split("/")[3]);
+      $("#time"+i).text(getUnits(timeago)+" ago");
       $("#stars"+i).html(getStarsText(ratingsList[i]["stars"]));
-      $("#reviewText"+i).html(ratingsList[i]["review"]);
+      $("#reviewText"+i).text(ratingsList[i]["review"]);
       $("#teacherLink"+i).attr("href", "teacher?teacher="+teacherList[i]);
     }
   });
 });
 
 const dbRef = firebase.database().ref();
-const highestRatedTeachers = dbRef.child("teachers").orderByChild("avgRating").limitToLast(10); // 📸🦖😘 ez 😘🦖📸
+const highestRatedTeachers = dbRef.child("teachers").orderByChild("avgRating").limitToLast(10); // 📸🦖😘 nice for ? 😘🦖📸
 
 highestRatedTeachers.once("value").then(function(snapshot) {
   var bestTeacherList = [];
   var teacherRatingList = [];
+  var numRatingList = [];
+
   snapshot.forEach(function(child) { // this is the 5 highest rated teachers
     bestTeacherList.push(child.ref.key);
+
     var teacherJSON = child.val();
     teacherRatingList.push(teacherJSON["avgRating"]);
+    numRatingList.push(teacherJSON["numRatings"]);
+
   });
   console.log(bestTeacherList);
   for (var i=0; i < bestTeacherList.length; i++){
-    $("#t"+i).html(bestTeacherList[i]+"<br> "+getStarsText(teacherRatingList[i]));
+    $("#t"+i).html(bestTeacherList[i]+" - "numRatingList[i]+" ratings<br> "+getStarsText(teacherRatingList[i]));
     $("#t"+i).attr("href", "teacher?teacher="+bestTeacherList[i]);
   }
 });
-
-
-
 
 document.getElementById("rateBtn").addEventListener('click', e =>{
   window.location.href = '../rate';

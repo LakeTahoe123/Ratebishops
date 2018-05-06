@@ -1,13 +1,60 @@
 {
   "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null",
+		"lastFive":{
+      ".read": "auth != null",
+    	".write": false
+    },
+    "tbs":{
+      "$dept":{
+        ".read": "auth != null",
+        ".validate":"!$dept.contains('script')",
+
+          "$class":{
+            ".validate":"!$class.contains('script')",
+            "$teacher":{
+              ".write": "newData.exists()",
+            	".validate":"!$teacher.contains('script')",
+              "$reviewsAnd":{
+                ".validate": "newData.hasChildren(['grade', 'review','stars']) && !data.hasChild('timestamp') && !newData.hasChild('timestamp')",
+                "review":{
+                  ".validate":"newData.isString() && newData.val().length <= 360 && !newData.val().contains('script')"
+                },
+                  "grade":{
+                  ".validate":"newData.isString() && newData.val().length <= 3"
+                },
+                "stars":{
+                  ".validate":"newData.isNumber() && newData.val()>0 && newData.val()<=6"
+                },
+                "$other":{
+                  ".validate":false
+                }
+              }
+            }
+          }
+      }
+    },
+
 
     "teachers": {
-      "$teacher":{".indexOn": ["avgRating"]
+      ".read":"auth != null",
+      ".indexOn": "avgRating"
+  	},
+    "users":{
+      "$user_id":{
+        "publicData":{
+          ".write": "$user_id == auth.uid",
+          ".read": "$user_id == auth.uid",
+          "Grade":{
+            ".validate": "newData.isString() && newData.val().length <= 2"
+          },
+          "$other":{
+            ".validate":false
+          }
+        }
 
-}
-  	}
+      }
+
+    }
   }
 
 }

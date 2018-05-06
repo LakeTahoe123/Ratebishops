@@ -133,7 +133,7 @@ exports.addTimestamp = functions.database.ref('/tbs/{department}/{class}/{teache
     }
     if(canWrite){
       console.log("good");
-      const promise = (event.data.ref).child("timestamp").set(admin.database.ServerValue.TIMESTAMP);
+      const promise = (event.data.adminRef).child("timestamp").set(admin.database.ServerValue.TIMESTAMP);
       admin.database().ref("/teachers/"+teacherName).child("ratings").push(pathString); //TODO find the double write
       return promise;
     }else{

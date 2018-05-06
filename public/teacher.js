@@ -60,10 +60,10 @@ firebase.database().ref("/teachers/"+teacherName).once("value").then(function(sn
         teacherCardDiv.appendTo("#cardColumn");
 
         $("#stars"+i).html(getStarsText(jsonList[i]["stars"])); // puts all the actual content into the card
-        $("#grade"+i).html("Grade this person got: "+jsonList[i]["grade"]);
-        $("#time"+i).html(getUnits(timeago)+" ago");
-        $("#className"+i).html(pathList[i].split("/")[3]);
-        $("#reviewText"+i).html(jsonList[i]["review"]);
+        $("#grade"+i).text("Grade this person got: "+jsonList[i]["grade"]);
+        $("#time"+i).text(getUnits(timeago)+" ago");
+        $("#className"+i).text(pathList[i].split("/")[3]);
+        $("#reviewText"+i).text(jsonList[i]["review"]);
         $("#classLink"+i).attr("href", "class?dept="+pathList[i].split("/")[2]+"=class="+pathList[i].split("/")[3]);
 
       }

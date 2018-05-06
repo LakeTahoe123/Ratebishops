@@ -34,11 +34,11 @@ classRef.once("value").then(function(snapshot) {
         });
         teacherCardDiv.appendTo("#cardColumn");
         teacherCardDiv.show();
-        $("#teacherName"+i).html(" "+sortedList[i][0]); // 🍰🍦🍧 puts all the actual content into the card 🍰🍦🍧
-        $("#stars"+i).html(getStarsText(sortedList[i][1]["stars"])); 
-        $("#grade"+i).html("Grade this person got: "+sortedList[i][1]["grade"]);
-        $("#time"+i).html(getUnits(timeago)+" ago");
-        $("#reviewText"+i).html(sortedList[i][1]["review"]);
+        $("#teacherName"+i).text(" "+sortedList[i][0]); // 🍰🍦🍧 puts all the actual content into the card 🍰🍦🍧
+        $("#stars"+i).html(getStarsText(sortedList[i][1]["stars"]));
+        $("#grade"+i).text("Grade this person got: "+sortedList[i][1]["grade"]);
+        $("#time"+i).text(getUnits(timeago)+" ago");
+        $("#reviewText"+i).text(sortedList[i][1]["review"]);
         $("#teacherLink"+i).attr("href", "teacher?teacher="+sortedList[i][0]);
         i++;
     }

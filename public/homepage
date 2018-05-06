@@ -47,18 +47,18 @@
       <h5>Highest Rated Teachers</h5>
       <ul class="collection with-header">
         <!--<li class="collection-header"><h4>Recent Reviews</h4></li>-->
-        <a id="t0" href="teacher" class="collection-item  grey-text text-darken-2">
+        <a id="t9" href="teacher" class="collection-item  grey-text text-darken-2">
         <span class="title"></span>
         <br></a>
-        <a id="t1" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
-        <a id="t2" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
-        <a id="t3" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
-        <a id="t4" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
-        <a id="t5" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
-        <a id="t6" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
-        <a id="t7" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
         <a id="t8" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
-        <a id="t9" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
+        <a id="t7" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
+        <a id="t6" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
+        <a id="t5" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
+        <a id="t4" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
+        <a id="t3" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
+        <a id="t2" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
+        <a id="t1" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
+        <a id="t0" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
 
       </ul>
     </div>

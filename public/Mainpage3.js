@@ -75,7 +75,7 @@ highestRatedTeachers.once("value").then(function(snapshot) {
   });
   console.log(bestTeacherList);
   for (var i=0; i < bestTeacherList.length; i++){
-    $("#t"+i).html(bestTeacherList[i]+": "+teacherRatingList[i]+" stars");
+    $("#t"+i).text(bestTeacherList[i]+": "+teacherRatingList[i]+" stars");
     $("#t"+i).attr("href", "teacher?teacher="+bestTeacherList[i]);
   }
 });

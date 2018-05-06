@@ -226,16 +226,7 @@ firebase.auth().onAuthStateChanged(firebaseUser=>{
   if(firebaseUser){
     uid=firebase.auth().currentUser.uid;
     console.log("logged in");
-    database.ref("/users/"+uid+"/privateData").once("value").then(function(snapshot) {
-      reviews=snapshot.val();
-      for (var key in reviews) {
-        if (reviews.hasOwnProperty(key)) {
-          var val = reviews[key];
-          val=val.split(val.split("/")[5])[0];
-          userReviews.push(val);
-        }
-      }
-    });
+
 
   }else{
     window.location.href = '../login';
