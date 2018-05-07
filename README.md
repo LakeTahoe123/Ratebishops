@@ -1,4 +1,3 @@
-# BishopsAttendance
-A Project By Adv. Topics @ Bishops 2018
-WASSUP GUYS
-ok so we r gonna do ratebishops we rate teachers and put in anonymous grades n stuff r u guys cool with that?
+# Ratebishops
+This site was made as part of the Advanced Topics in CS @ Bishop's.
+You can visit the site at ratebishops.me
