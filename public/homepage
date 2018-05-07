@@ -59,8 +59,9 @@
         <a id="t2" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
         <a id="t1" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
         <a id="t0" href="teacher" class="collection-item  grey-text text-darken-2"><br></a>
-
       </ul>
+      <h6><a href="allteachers">View all teachers</a></h6>
+
     </div>
   </div>
 <div id="cardColumn" class="col s12 m4 l8">

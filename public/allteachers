@@ -28,6 +28,37 @@
 </head>
 
 <body id="main">
-  <div>
+  <nav class="#424242 grey darken-3">
+    <div class="nav-wrapper">
+      <a href="#" id="teacherName" class="brand-logo yellow-text text-darken-2 PaddingLogo">All Teachers</a>
+      <ul id="nav-links" class="right hide-on-med-and-down">
+        <li><a class="waves-effect waves-light btn yellow black-text" href="rate">Rate a teacher</a></li>
+        <li><a id="rateBtn" href="search"><i class="material-icons">search</i></a></li>
+        <li><a href="homepage"><i class="material-icons">home</i></a></li>
+        <li><a id="logout" href="homepage">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="row">
+    <div id="cardColumn" class="col s12 m4 l8">
+      <div id="teacherCard" class="card #424242 grey darken-3">
+        <div class="card-content white-text">
+          <span id="teacher" class="card-title"></span>
+
+          <h6 id="stars"></h6>
+          <h6 id="time"></h6>
+          <br>
+          <p id="reviewText"></p>
+          <br>
+          <div class="card-action">
+
+            <a id="teacherLink" href="teacher">View this teacher's reviews</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <script src="allteachers.js"></script>
 </body>

@@ -50,8 +50,12 @@ firebase.database().ref("/teachers/"+teacherName).once("value").then(function(sn
 
       jsonList.reverse();
       pathList.reverse();
+      console.log(jsonList)
 
       for(var i = 0; i < refList.length; i++) { // iterates through the reflist
+        if(jsonList[i]==null){
+          i++
+        }
         var timeago = Date.now()-jsonList[i]["timestamp"];
         var teacherCardDiv = $("#teacherCard").clone().prop('id', 'card'+i);
         teacherCardDiv.find("*").each(function() { // appends number to each of the html child elements

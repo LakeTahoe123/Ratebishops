@@ -16,6 +16,7 @@
 
 const dbRef = firebase.database().ref();
 const highestRatedTeachers = dbRef.child("teachers").orderByChild("avgRating"); // 🍔🍂🆑 better now 🆑🍂🍔
+$("#teacherCard").hide();
 
 highestRatedTeachers.once("value").then(function(snapshot) {
   var bestTeacherList = [];
@@ -29,10 +30,27 @@ highestRatedTeachers.once("value").then(function(snapshot) {
     teacherRatingList.push(teacherJSON["avgRating"]);
     numRatingList.push(teacherJSON["numRatings"]);
   });
+  bestTeacherList.reverse()
+  teacherRatingList.reverse()
+  numRatingList.reverse()
+
   console.log(bestTeacherList);
   for (var i=0; i < bestTeacherList.length; i++){
-    $("#t"+i).html(bestTeacherList[i]+" - "numRatingList[i]+" ratings<br> "+getStarsText(teacherRatingList[i]));
-    $("#t"+i).attr("href", "teacher?teacher="+bestTeacherList[i]);
+    var teacherCardDiv = $("#teacherCard").clone().prop('id', 'card'+i);
+    teacherCardDiv.find("*").each(function() { // appends number to each of the html child elements
+      this.id = this.id + i;
+    });
+    if(numRatingList[i]>1){
+      numRatingList[i]=numRatingList[i]+" reviews";
+    }else{
+      numRatingList[i]=numRatingList[i]+" review";
+    }
+    teacherCardDiv.appendTo("#cardColumn");
+    teacherCardDiv.show();
+    $("#teacher"+i).text(bestTeacherList[i]);
+    $("#time"+i).text(numRatingList[i])
+    $("#stars"+i).html(getStarsText(teacherRatingList[i]));
+    $("#teacherLink"+i).attr("href", "teacher?teacher="+bestTeacherList[i]);
   }
 });
 

@@ -77,7 +77,12 @@ highestRatedTeachers.once("value").then(function(snapshot) {
   });
   console.log(bestTeacherList);
   for (var i=0; i < bestTeacherList.length; i++){
-    $("#t"+i).html(bestTeacherList[i]+" - "numRatingList[i]+" ratings<br> "+getStarsText(teacherRatingList[i]));
+    if(numRatingList[i]>1){
+      numRatingList[i]=numRatingList[i]+" reviews";
+    }else{
+      numRatingList[i]=numRatingList[i]+" review";
+    }
+    $("#t"+i).html(bestTeacherList[i]+" - "+numRatingList[i]+"<br> "+getStarsText(teacherRatingList[i]));
     $("#t"+i).attr("href", "teacher?teacher="+bestTeacherList[i]);
   }
 });
