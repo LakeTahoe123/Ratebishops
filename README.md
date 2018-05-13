@@ -3,3 +3,9 @@ This site was made as part of the Advanced Topics in CS @ Bishop's, and is a pla
 
 You can visit the site at [ratebishops.me](http://ratebishops.me)
 
+# Screenshots
+
+![Ratebishops1](https://kartik-bhagatwala.github.io/Ratebishops1.png)
+
+
+![Ratebishops2](https://kartik-bhagatwala.github.io/Ratebishops2.png)
