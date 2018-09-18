@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <script type = "text/javascript" src = "jquery-3.3.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="materialize.min.css">
+    <script src="materialize.min.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <style>
+    html,
+    body,
+    .login-box {
+      height: 100%;
+    }
+    a{
+      margin-bottom: 20px;
+      text-align:center;display:block;
+
+    }.errormsg{
+      color: red;
+      background-color: #ffc9c9;
+      border: red;
+      border-style: solid;
+      border-width: 2px;
+      border-radius: 5px;
+      padding: 7px;
+      margin-bottom:10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="valign-wrapper row login-box">
+    <div class="col card hoverable s10 pull-s1 m6 pull-m3 l4 pull-l4">
+      <form>
+        <div class="card-content">
+          <span class="card-title">Create an Account</span>
+          <div class="row">
+            <div class="input-field col s12">
+              <label for="email">Email address</label>
+              <input type="email" class="validate" name="email" id="email" required/>
+              <span id="emailerror" class="errormsg">Email is required.</span>
+            </div>
+
+            <div class="input-field col s12">
+              <label for="password">Password </label>
+              <input type="password" class="validate" name="password" id="password" required/>
+              <span id="passerror" class="errormsg">please enter a password.</span>
+              <br>
+            </div>
+            <br>
+
+            <div class="col s12">
+              <label for="grade">Grade Level</label>
+              <select id="grade">
+                <option disabled selected>Choose your option</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+          </div>
+          <br>
+          <span id="gradeerror" class="errormsg">please select your grade level.</span>
+
+          </div>
+        </div>
+        <div class="card-action right-align">
+          <a id="signup" class="btn center green waves-effect waves-light">Create Account</a>
+          <span id="errors" class="errormsg">please check that all fields are filled out correctly.</span>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  <script src="signup.js"></script>
+</body>
+
+</html>
